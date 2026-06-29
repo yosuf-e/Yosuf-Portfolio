@@ -7,7 +7,7 @@
 <title>Yosuf Elshaer's Portfolio</title>
 <style>
   :root{
-    --bg: #f9f7eb;        /* background color*/
+    --bg: #EFEAE7;        /* background color*/
     --card: #ffffff;
     --muted: #6b7280;
     --accent: #0f62fe;    /* blue accent */
@@ -45,6 +45,7 @@
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
   .link-card{display:flex;flex-direction:column;gap:8px;align-items:stretch}
   .link-card img{width:100%;height:100px;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,0.04)}
+  .link-card.special-card img {height: 101.33px; object-position: 50% -160px;}
   .link-card a{display:inline-block;color:var(--accent);text-decoration:none;font-weight:600}
   .muted{color:var(--muted)}
   ul{margin:8px 0 0 18px}
@@ -87,7 +88,7 @@
 
     <!-- 3. Projects -->
     <section id="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">💼 Projects</h2>
+      <h2 id="projects-heading">💼 Projects / Achivements 🎖️</h2>
       <div class="grid">
         <!-- YouTube Channel -->
         <div class="card link-card">
@@ -116,6 +117,14 @@
             <div class="muted">Aircraft 🛩️ Project (Class Photo 2025)</div>
           </a>
         </div>
+
+        <!-- Hall Of Fame -->
+        <div class="card link-card special-card">
+          <a class="banner-link" href="https://raw.githubusercontent.com/yosuf-e/Yosuf-Portfolio/refs/heads/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG" target="_blank" rel="noopener">
+            <img src="https://raw.githubusercontent.com/yosuf-e/Yosuf-Portfolio/refs/heads/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG" alt="Hall of Fame photo banner" style="height: 101.33px !important; width: 100%; object-fit: cover; object-position: center buttom !important;">
+            <div class="banner-title">Hall Of Fame (Class of 2024)</div>
+            <div class="muted">Name Located at Bottom Left Corner. ✨</div>
+          </a>
       </div>
     </section>
 
@@ -124,8 +133,8 @@
       <h2 id="education-heading">🎓 Education</h2>
       <div class="card">
         <ul>
-          <li><strong>Aviation High School (NYC, USA)</strong>          — Grade: 96.19%, 2024-2025</li>
-          <br><li><strong>Sama Winchester College (Cairo, EGY)</strong> — Grade: N/A   , 2025-2028</li>
+          <li><strong>Sama Winchester College (Cairo, EGY)</strong> — Grade: N/A   , 2025-2028</li>
+          <br><li><strong>Aviation High School (NYC, USA)</strong>          — Grade: 96.19%, 2024-2025</li>
         </ul>
       </div>
     </section>
