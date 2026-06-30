@@ -45,7 +45,7 @@
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
   .link-card{display:flex;flex-direction:column;gap:8px;align-items:stretch}
   .link-card img{width:100%;height:100px;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,0.04)}
-  .link-card.special-card img {height: 101.33px; object-position: 50% -160px;}
+  .link-card.special-card img {width:100%;height:100px;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,0.04); object-position: center bottom;}
   .link-card a{display:inline-block;color:var(--accent);text-decoration:none;font-weight:600}
   .muted{color:var(--muted)}
   ul{margin:8px 0 0 18px}
@@ -60,6 +60,9 @@
   .banner-title{font-weight:700;margin-top:4px}
   /* visually hidden for accessibility if needed */
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .card ul { list-style: none; padding: 0; }
+  .card li { display: flex; justify-content: space-between; align-items: center right; margin-bottom: 15px; }
+
 </style>
 </head>
 <body>
@@ -120,8 +123,8 @@
 
         <!-- Hall Of Fame -->
         <div class="card link-card special-card">
-          <a class="banner-link" href="https://raw.githubusercontent.com/yosuf-e/Yosuf-Portfolio/refs/heads/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG" target="_blank" rel="noopener">
-            <img src="https://raw.githubusercontent.com/yosuf-e/Yosuf-Portfolio/refs/heads/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG" alt="Hall of Fame photo banner" style="height: 101.33px !important; width: 100%; object-fit: cover; object-position: center buttom !important;">
+          <a class="banner-link" href="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true" target="_blank" rel="noopener">
+            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true" alt="Hall of Fame photo banner" >
             <div class="banner-title">Hall Of Fame (Class of 2024)</div>
             <div class="muted">Name Located at Bottom Left Corner. ✨</div>
           </a>
@@ -133,21 +136,24 @@
       <h2 id="education-heading">🎓 Education</h2>
       <div class="card">
         <ul>
-          <li><strong>Sama Winchester College (Cairo, EGY)</strong> — Grade: N/A   , 2025-2028</li>
-          <br><li><strong>Aviation High School (NYC, USA)</strong>          — Grade: 96.19%, 2024-2025</li>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7XziWhDu5Db1lbmdcBrkYKsCsvFPjSFcAkZA83MaWBYwAfl5m05HXxMmw&s=10" alt="Sama Logo" class="Sama-Logo" style="height:45px;" border-radius: 5px;>
+          <li><strong>Sama Winchester College (Cairo, EGY)</strong> Grade: N/A, 2025-2028</li>
+          <img src="https://echalk-slate-prod.s3.amazonaws.com/private/schools/1330/site/settings/2e263e53-288e-47d0-8019-342b8629dc3b?AWSAccessKeyId=AKIAJSZKIBPXGFLSZTYQ&Expires=1849996334&response-cache-control=private%2C%20max-age%3D31536000&response-content-disposition=attachment%3Bfilename%3D%22AV%2520Logo%2520Transparent%2520Background.png%22&response-content-type=image%2Fpng&Signature=bZ226LCxQpytTSKSymbyK1N6mqM%3D" alt="Aviation Logo" class="Aviation-Logo" style="height:35px;" border-radius: 5px;>
+          <br><li><strong>Aviation High School (NYC, USA)</strong>  Grade: 96.19%, 2024-2025</li>
         </ul>
       </div>
     </section>
+
 
     <!-- 5. Certifications / Training -->
     <section id="certs" aria-labelledby="certs-heading">
       <h2 id="certs-heading">📜 Certifications / Training</h2>
       <div class="card">
         <ul>
-          <li><a href="https://NOTOUTYET......." target="_blank" rel="noopener">Python Essentials 1</a> — Cisco Networking Academy (July 2026)</li>
-          <li><a href="https://www.credly.com/badges/69412dd0-6d7e-4c85-abb1-09ace5302756/public_url" target="_blank" rel="noopener">Introduction to Cybersecurity</a> — Cisco Networking Academy (June 2026)</li>
-          <li><a href="https://www.credly.com/badges/e81ec231-7cf4-4d51-ada8-0b54002a4288/public_url" target="_blank" rel="noopener">Digital Safety and Security Awareness</a> — Cisco Networking Academy (June 2026)</li>
-          <li><a href="https://www.credly.com/badges/36c232c0-e53d-4896-a27d-ae6bd93e8384/public_url" target="_blank" rel="noopener">English for IT: Advice and Time</a> — Cisco Networking Academy (June 2026)</li>
+          <li><a href="https://......." target="_blank" rel="noopener">Python Essentials 1</a> Cisco Networking Academy (July 2026)</li>
+          <li><a href="https://www.credly.com/badges/69412dd0-6d7e-4c85-abb1-09ace5302756/public_url" target="_blank" rel="noopener">Introduction to Cybersecurity</a> Cisco Networking Academy (June 2026)</li>
+          <li><a href="https://www.credly.com/badges/e81ec231-7cf4-4d51-ada8-0b54002a4288/public_url" target="_blank" rel="noopener">Digital Safety and Security Awareness</a> Cisco Networking Academy (June 2026)</li>
+          <li><a href="https://www.credly.com/badges/36c232c0-e53d-4896-a27d-ae6bd93e8384/public_url" target="_blank" rel="noopener">English for IT: Advice and Time</a> Cisco Networking Academy (June 2026)</li>
         </ul>
       </div>
     </section>
@@ -158,6 +164,8 @@
       <div class="card">
         <div class="skills" aria-hidden="false">
           <span class="skill">Python 🐍</span>
+          <span class="skill">HTML 🌐</span>
+          <span class="skill">Remotion 🎥</span>
           <span class="skill">Time Management ⌚</span>
           <span class="skill">Cybersecurity 🧑🏻‍💻</span>
           <span class="skill">Artificial Intelligence (AI) 🤖</span>
