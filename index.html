@@ -7,10 +7,11 @@
 <title>Yosuf Elshaer's Portfolio</title>
 <style>
   :root{
-    --bg: #EFEAE7;        /* background color*/
+    --bg: linear-gradient(130deg, var(--accent-blue) 0%, #f7f4f0 25%);        /* background color*/
     --card: #ffffff;
     --muted: #6b7280;
     --accent: #0f62fe;    /* blue accent */
+    --accent-blue: #80a9f7;
     --glass: rgba(15,98,254,0.06);
     --radius: 12px;
     --maxw: 980px;
@@ -19,7 +20,8 @@
   body{
     margin:0;
     font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
-    background:var(--bg);
+    background-image: var(--bg);
+    background-attachment: fixed;
     color:#0f1724;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
@@ -30,15 +32,44 @@
 .wrap {
   box-sizing: border-box;
   width: 980px;
-  height: 135px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
-  border-radius: 16px;
+  max-width: 100%;
   padding: 28px;
-  box-shadow: 0 6px 24px rgba(12,18,30,0.06);
 }
   header{display:flex;flex-direction:column;gap:6px}
   h1{margin:0;font-size:28px;letter-spacing:-0.2px}
   .title-sub{color:var(--muted);font-weight:600}
+  .hero-header{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    padding:22px 24px;
+    border-radius:16px;
+    overflow:hidden;
+    background-image:url('https://images.unsplash.com/photo-1669295384050-a1d4357bd1d7?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWJzdHJhY3QlMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww');
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position:center;
+  }
+  .hero-header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, rgba(7,19,36,0.72), rgba(7,19,36,0.32));
+    z-index:0;
+  }
+  .hero-header > *{
+    position:relative;
+    z-index:1;
+  }
+  .hero-header h1{
+    color:#ffffff;
+    text-shadow:0 2px 12px rgba(0,0,0,0.35);
+  }
+  .hero-header .title-sub{
+    color:#e5eefb;
+  }
   section{margin-top:22px}
   h2{margin:0 0 10px 0;font-size:18px;display:flex;align-items:center;gap:10px}
   .card{background:var(--card);border-radius:var(--radius);padding:14px;border:1px solid rgba(15,23,42,0.04)}
@@ -67,12 +98,12 @@
 </head>
 <body>
   <main class="wrap" role="main">
-    <header style="display: flex; justify-content: space-between; align-items: center;">
+    <header class="hero-header">
       <div>
         <h1>Yosuf Ahmed Elshaer</h1>
         <div class="title-sub">High School Student</div>
       </div>
-      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.JPG?raw=true" alt="Profile Photo" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.JPG?raw=true" alt="Profile Photo" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.9); box-shadow: 0 4px 16px rgba(0,0,0,0.18);">
     </header>
 
 
@@ -222,12 +253,12 @@
   <h2 id="contact-heading">📩 Contact Me </h2>
 
   <!-- Flex container for logos -->
-  <div style="display:flex; gap:70px; align-items:center; margin-top:12px;">
+  <div style="display:flex; gap:65px; align-items:center; margin-top:12px;">
 
     <!-- Email logo -->
     <a href="mailto:yosuf.elshaer+portfolio@gmail.com">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1280px-Gmail_icon_%282020%29.svg.png" 
-           alt="Gmail logo" style="height:30px;">
+      <img src="https://upload.wikimedia.org/wikipedia/ru/d/db/Windows_Mail_Icon.png" 
+           alt="Mail logo" style="height:40px;">
     </a>
 
     <!-- GitHub logo -->
