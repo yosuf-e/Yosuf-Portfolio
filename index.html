@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/7867/7867852.png">
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/7770/7770659.png">
 <title>Yosuf Elshaer's Portfolio</title>
 <style>
   :root{
@@ -20,7 +20,7 @@
   body{
     margin:0;
     font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
-    background-image: var(--bg);
+    background: var(--bg);
     background-attachment: fixed;
     color:#0f1724;
     -webkit-font-smoothing:antialiased;
@@ -34,42 +34,13 @@
   width: 980px;
   max-width: 100%;
   padding: 28px;
+  height: 140px; /* Top Header Card Height */
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+  border-radius: 16px;
 }
   header{display:flex;flex-direction:column;gap:6px}
   h1{margin:0;font-size:28px;letter-spacing:-0.2px}
   .title-sub{color:var(--muted);font-weight:600}
-  .hero-header{
-    position:relative;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:16px;
-    padding:22px 24px;
-    border-radius:16px;
-    overflow:hidden;
-    background-image:url('https://images.unsplash.com/photo-1669295384050-a1d4357bd1d7?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWJzdHJhY3QlMjB0ZWNobm9sb2d5fGVufDB8fDB8fHww');
-    background-size:100% 100%;
-    background-repeat:no-repeat;
-    background-position:center;
-  }
-  .hero-header::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(90deg, rgba(7,19,36,0.72), rgba(7,19,36,0.32));
-    z-index:0;
-  }
-  .hero-header > *{
-    position:relative;
-    z-index:1;
-  }
-  .hero-header h1{
-    color:#ffffff;
-    text-shadow:0 2px 12px rgba(0,0,0,0.35);
-  }
-  .hero-header .title-sub{
-    color:#e5eefb;
-  }
   section{margin-top:22px}
   h2{margin:0 0 10px 0;font-size:18px;display:flex;align-items:center;gap:10px}
   .card{background:var(--card);border-radius:var(--radius);padding:14px;border:1px solid rgba(15,23,42,0.04)}
@@ -98,12 +69,12 @@
 </head>
 <body>
   <main class="wrap" role="main">
-    <header class="hero-header">
+    <header style="display: flex; justify-content: space-between; align-items: center;">
       <div>
         <h1>Yosuf Ahmed Elshaer</h1>
         <div class="title-sub">High School Student</div>
       </div>
-      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.JPG?raw=true" alt="Profile Photo" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.9); box-shadow: 0 4px 16px rgba(0,0,0,0.18);">
+      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.JPG?raw=true" alt="Profile Photo" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover;">
     </header>
 
 
