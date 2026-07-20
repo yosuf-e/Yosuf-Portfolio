@@ -11,7 +11,7 @@
   :root{
     /* New professional palette (Deep Slate & Soft Teal Accent) */
     --bg-start: #0d1117; /* Deep Navy/Slate for the dark background */
-    --bg-end: #182232;   /* Slightly lighter slate */
+    --bg-end: #0c1d33;   /* Slightly lighter slate */
     --accent: #48CAE4;   /* Bright, modern Teal Accent */
     --text-color: #f0f6f9; /* Light text color */
     --card-bg: #1e232a;   /* Darker card background */
@@ -47,14 +47,15 @@
     background-size: 350% 350%; 
     background-position: 100% 50%; 
   } 
-}
+} 
+
 
   /* --- Layout and Card Styles --- */
   html,body{height:100%}
 
   .wrap {
     box-sizing: border-box;
-    width: var(--maxw); /* Use the defined max width */
+    width: var(--maxw); 
     max-width: 100%;
     padding: 28px;
     height: 140px; /* Top Header Card Height */
@@ -76,9 +77,10 @@
     border: 1px solid rgba(72, 202, 228, 0.1); /* Subtle accent border */
   }
 
-  /* --- Specific Component Styles --- */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;} /* Slightly wider gap */
+  /* Grid setup for two columns on desktop */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;}
 
+  /* --- Specific Component Styles --- */
   .link-card{display:flex;flex-direction:column;gap:10px;}
 
   .link-card img{width:100%;height:100px;object-fit:cover;border-radius:10px;border:1px solid rgba(72, 202, 228, 0.3)}
@@ -112,6 +114,14 @@
   .card ul { list-style: none; padding: 0; }
   .card li { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);}
 
+
+  /* --- Responsive Adjustment for Mobile (Single Column) --- */
+  @media(max-width:760px){
+    /* Force the grid to display only one card per row on mobile */
+    .grid{grid-template-columns:1fr}
+    body{padding:18px}
+  }
+
 </style>
 </head>
 <body>
@@ -121,7 +131,6 @@
         <h1>Yosuf Ahmed Elshaer</h1>
         <div class="title-sub">High School Student</div>
       </div>
-      <!-- Profile Photo kept as is -->
       <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.JPG?raw=true" alt="Profile Photo" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);">
     </header>
 
@@ -130,7 +139,11 @@
     <section id="about" aria-labelledby="about-heading">
       <h2 id="about-heading">About Me</h2>
       <div class="card">
-        <p>I am a globally traveled high school student who has lived and studied across Egypt, Saudi Arabia, the UAE, and the USA, developing strong adaptability to diverse educational systems. Academically, I have built a solid foundation in STEAM and basic software development, creating coding projects like OptiFetch and a Python-powered Telegram Bot. I am highly proficient in leveraging AI tools—such as NotebookLM, Gemini, ElevenLabs, and local models like Gemma — for research, analysis, and content creation. Additionally, I run the educational YouTube channel '@ArabToons_Official,' which allows me to apply my skills in video editing, presentation, and audience engagement. I am eager to apply this unique blend of technical, creative, and collaborative skills to future opportunities.</p>
+        <p>I am a High School student with extensive global travel experience, having visited Egypt, Saudi Arabia, the UAE, and the United States. My diverse educational background, spanning multiple schools with unique teaching methods, has significantly enhanced my adaptability and flexibility. I possess a strong foundation in technical skills, evidenced by my GitHub projects (OptiFetch, Telegram Python-Powered-Bot) and general coding knowledge. 
+          I am adept at utilizing a wide range of AI tools, including Notebook LM for research, Gemini for visual enhancements, ElevenLabs for voiceovers, and Local AI models like Gemma and Qwen for enhanced privacy and limitation removal. 
+          I have also created a YouTube Channel named '@ArabToons_Official,' where I share educational content and insights, engaging with a diverse audience to promote learning and creativity. 
+          Throughout my educational journey, I have participated in numerous STEAM projects, honing skills in time management, scheduling, collaboration, video editing, and presentation creation. 
+          I am enthusiastic about continuing my learning and exploration, using my diverse experiences and skills to achieve my goals.</p>
       </div>
     </section>
 
@@ -206,17 +219,17 @@
         <ul>
           <li>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cisco_Networking_Academy.svg/3840px-Cisco_Networking_Academy.svg.png" alt="Cisco-NetCad-Logo" class="Cisco-NetCad-Logo" style="height:12px; margin-right: 10px;">
-            <a href="https://www.credly.com/badges/69412dd0-6d7e-4c85-abb1-09ace5302756/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Python Essentials 1</a>
+            <a href="https://notavaliable" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Python Essentials 1</a>
             <span class="muted">Cisco Networking Academy</span>
           </li>
           <li>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cisco_Networking_Academy.svg/3840px-Cisco_Networking_Academy.svg.png" alt="Cisco-NetCad-Logo" class="Cisco-NetCad-Logo" style="height:12px; margin-right: 10px;">
-            <a href="https://www.credly.com/badges/e81ec231-7cf4-4d51-ada8-0b54002a4288/public_url" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Introduction to Cybersecurity</a>
+            <a href="https://www.credly.com/badges/69412dd0-6d7e-4c85-abb1-09ace5302756/public_url" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Introduction to Cybersecurity</a>
             <span class="muted">Cisco Networking Academy</span>
           </li>
           <li>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cisco_Networking_Academy.svg/3840px-Cisco_Networking_Academy.svg.png" alt="Cisco-NetCad-Logo" class="Cisco-NetCad-Logo" style="height:12px; margin-right: 10px;">
-            <a href="https://www.credly.com/badges/36c232c0-e53d-4896-a27d-ae6bd93e8384/public_url" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Digital Safety and Security Awareness</a>
+            <a href="https://www.credly.com/badges/e81ec231-7cf4-4d51-ada8-0b54002a4288/public_url" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Digital Safety and Security Awareness</a>
             <span class="muted">Cisco Networking Academy</span>
           </li>
           <li>
@@ -230,7 +243,7 @@
 
     <!-- 6. Skills -->
     <section id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Skills</h2>
+      <h2 id="skills-heading">Skills & Expertise</h2>
       <div class="card">
         <div class="skills">
           <span class="skill">Python 🐍</span>
@@ -261,7 +274,7 @@
         <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
       </header>
       <p style="margin:0; line-height:1.6;">
-        "Type Letter Here..."
+        "Type Letter here..."
       </p>
     </div>
 
@@ -272,7 +285,7 @@
         <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
       </header>
       <p style="margin:0; line-height:1.6;">
-        "Type Letter Here..."
+        "Type Letter here..."
       </p>
     </div>
 
