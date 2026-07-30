@@ -255,7 +255,8 @@
       </div>
       <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.JPG?raw=true"
         alt="Profile Photo"
-        style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);">
+        style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);"
+        class="animate-in">
     </header>
 
 
@@ -316,7 +317,7 @@
           </a>
         </div>
         <!-- STEAM Video -->
-        <div class="card link-card special-card">
+          <div class="card link-card special-card">
           <a class="banner-link" href="https://www.youtube.com/watch?v=3iZfQ_wjrrI" target="_blank" rel="noopener">
             <img
               src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/10th-Grade-STEAM-Thumbnail.webp?raw=true"
@@ -329,7 +330,7 @@
     </section>
 
     <!-- 4. Education -->
-    <section id="education" aria-labelledby="education-heading">
+    <section id="education" aria-labelledby="education-heading" class="animate-in">
       <h2 id="education-heading">Education</h2>
       <div class="card">
         <ul>
@@ -352,7 +353,7 @@
     </section>
 
     <!-- 5. Certifications / Training -->
-    <section id="certs" aria-labelledby="certs-heading">
+    <section id="certs" aria-labelledby="certs-heading" class="animate-in">
       <h2 id="certs-heading">Certifications & Training</h2>
       <div class="card">
         <ul>
@@ -402,12 +403,12 @@
 
     <!-- 7. Recommendation Letters -->
     <section class="recommendations-section" style="margin-top:40px;" class="animate-in">
-      <h2 style="border-bottom: none; font-size:1.8em;">Recommendations</h2>
+      <h2>Recommendations</h2>
 
       <div class="grid">
 
         <!-- Card 1 -->
-        <div class="card">
+        <div class="card" class="animate-in">
           <header>
             <h3 style="margin:0; font-size:20px; color:var(--accent);">Name Here...</h3>
             <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
@@ -418,7 +419,7 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="card">
+        <div class="card" class="animate-in">
           <header>
             <h3 style="margin:0; font-size:20px; color:var(--accent);">Name Here...</h3>
             <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
@@ -440,13 +441,12 @@
 
         <!-- Email logo -->
         <a href="mailto:yosuf.elshaer+portfolio@gmail.com">
-          <img src="https://cdn-icons-png.flaticon.com/512/18154/18154191.png" alt="Mail logo" style="height:40px;">
+          <img src="https://cdn-icons-png.flaticon.com/512/18154/18154191.png" alt="Mail logo" style="height:40px;" class="animate-in">
         </a>
 
         <!-- GitHub logo -->
         <a href="https://github.com/yosuf-e" target="_blank" rel="noopener">
-          <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png"
-            alt="GitHub logo" style="height:35px;">
+          <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" class="animate-in" alt="GitHub logo" style="height:35px;">
         </a>
       </div>
     </section>
@@ -495,7 +495,7 @@
         if (aboutTextElement) {
           const fullText = "I am a highly adaptable High School student with extensive global exposure (Egypt, Saudi Arabia, UAE, US). I possess a strong foundation in coding, demonstrated by a GitHub project: OptiFetch, and a Python-Powered Telegram-Bot, and proficiency in utilizing advanced AI tools (Gemini, ElevenLabs, local AI models like Gemma/Qwen) for research and content creation. I have successfully applied these skills through educational STEAM projects and content creation through my YouTube channel: @ArabTeach_Edu; honing abilities in collaboration, time management, and multimedia production.";
           let index = 0;
-          const typingSpeed = 15; // Speed of typing (milliseconds per character)
+          const typingSpeed = 10; // Speed of typing (milliseconds per character)
 
           function typeWriter() {
             if (index < fullText.length) {
