@@ -1,129 +1,251 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/7770/7770659.png">
-<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/7770/7770659.png">
-<title>Yosuf Elshaer's Portfolio</title>
-<style>
-  /* --- 1. Updated Color Palette and Background Animation --- */
-  :root{
-    /* New professional palette (Deep Slate & Soft Teal Accent) */
-    --bg-start: #0d1117; /* Deep Navy/Slate for the dark background */
-    --bg-end: #0c1d33;   /* Slightly lighter slate */
-    --accent: #48CAE4;   /* Bright, modern Teal Accent */
-    --text-color: #f0f6f9; /* Light text color */
-    --card-bg: #1e232a;   /* Darker card background */
-    --muted: #8b949e;     /* Soft gray for secondary text */
-    --glass: rgba(30, 35, 42, 0.7); /* Slightly more opaque glass effect */
-    --radius: 16px;
-    --maxw: 1000px;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/7770/7770659.png">
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/7770/7770659.png">
+  <title>Yosuf Elshaer's Portfolio</title>
+  <style>
+    /* --- 1. Updated Color Palette and Background Animation --- */
+    :root {
+      /* New professional palette (Deep Slate & Soft Teal Accent) */
+      --bg-start: #010b19;
+      /* Deep Navy/Slate for the dark background */
+      --bg-mid: #001135;
+      /* Slightly lighter slate */
+      --bg-end: #1f012e;
+      /* Lighter slate */
+      --accent: #48CAE4;
+      /* Bright, modern Teal Accent */
+      --text-color: #f0f6f9;
+      /* Light text color */
+      --card-bg: #1e232a;
+      /* Darker card background */
+      --muted: #8b949e;
+      /* Soft gray for secondary text */
+      --glass: rgba(30, 35, 42, 0.7);
+      /* Slightly more opaque glass effect */
+      --radius: 16px;
+      --maxw: 1000px;
+    }
 
-  /* Animated Background Gradient using keyframes */
-  body{
-    margin:0;
-    font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
-    background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-    color:var(--text-color);
-    animation: gradientBreathe 5s ease-in-out infinite; 
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    background-attachment: fixed; /* Keeps the background static relative to scroll */
-    padding:28px;
-    display:flex;
-    justify-content:center;
-  }
+    /* Animated Background Gradient using keyframes */
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+      background: linear-gradient(60deg, var(--bg-start) 25%, var(--bg-mid) 50%, var(--bg-end) 75%);
+      color: var(--text-color);
+      animation: gradientBreathe 5s ease-in-out infinite;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-attachment: fixed;
+      /* Keeps the background static relative to scroll */
+      padding: 28px;
+      display: flex;
+      justify-content: center;
+    }
 
-  /* Keyframes that mimic inhaling and exhaling */ 
-@keyframes gradientBreathe { 
-  0%, 100% { 
-    background-size: 200% 200%; 
-    background-position: 0% 50%; 
-  } 
-  50% { 
-    /* Inhale: Expand the gradient size and shift position */
-    background-size: 350% 350%; 
-    background-position: 100% 50%; 
-  } 
-} 
+    /* Keyframes that mimic inhaling and exhaling */
+    @keyframes gradientBreathe {
 
+      0%,
+      100% {
+        background-size: 150% 150%;
+        background-position: 0% 50%;
+      }
 
-  /* --- Layout and Card Styles --- */
-  html,body{height:100%}
-
-  .wrap {
-    box-sizing: border-box;
-    width: var(--maxw); 
-    max-width: 100%;
-    padding: 28px;
-    height: 140px; /* Top Header Card Height */
-    background: var(--card-bg); /* Set a darker card background */
-    border-radius: var(--radius);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  }
-
-  header{display:flex;flex-direction:column;gap:6px}
-  h1{margin:0;font-size:32px;letter-spacing:-0.5px;color:var(--accent)} /* Highlight main name */
-  .title-sub{color:var(--muted);font-weight:400}
-  section{margin-top:28px}
-  h2{margin:0 0 15px 0;font-size:22px;border-bottom: 2px solid rgba(72, 202, 228, 0.3);padding-bottom: 5px;} /* Modern heading style */
-  
-  .card{
-    background: var(--card-bg); /* Use the dark background for cards */
-    border-radius: var(--radius);
-    padding: 20px;
-    border: 1px solid rgba(72, 202, 228, 0.1); /* Subtle accent border */
-  }
-
-  /* Grid setup for two columns on desktop */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;}
-
-  /* --- Specific Component Styles --- */
-  .link-card{display:flex;flex-direction:column;gap:10px;}
-
-  .link-card img{width:100%;height:100px;object-fit:cover;border-radius:10px;border:1px solid rgba(72, 202, 228, 0.3)}
-
-  .link-card.special-card img {
-    object-position: center bottom;
-  }
-
-  .link-card a{display:inline-block;color:var(--accent);text-decoration:none;font-weight:600;transition: color 0.3s;} /* Smooth hover effect */
-  .link-card a:hover{color: #a8d5ff;}
-
-  .muted{color:var(--muted)}
-  ul{margin:12px 0 0 24px}
-  
-  /* Skill Tags Style */
-  .skills{display:flex;flex-wrap:wrap;gap:10px}
-  .skill{
-    background: var(--glass);
-    padding: 8px 14px;
-    border-radius: 30px; /* Pill shape */
-    color: var(--accent); /* Accent color for skills */
-    font-weight:600;
-    font-size:14px;
-    border: 1px solid rgba(72, 202, 228, 0.3);
-  }
-
-  /* Helper Text/Links */
-  .banner-link{display:block;text-decoration:none;color:inherit}
-  .banner-title{font-weight:700;margin-top:6px;}
-  
-  .card ul { list-style: none; padding: 0; }
-  .card li { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);}
+      50% {
+        /* Inhale: Expand the gradient size and shift position */
+        background-size: 250% 250%;
+        background-position: 100% 50%;
+      }
+    }
 
 
-  /* --- Responsive Adjustment for Mobile (Single Column) --- */
-  @media(max-width:760px){
-    /* Force the grid to display only one card per row on mobile */
-    .grid{grid-template-columns:1fr}
-    body{padding:18px}
-  }
+    /* --- Layout and Card Styles --- */
+    html,
+    body {
+      height: 100%
+    }
 
-</style>
+    .wrap {
+      box-sizing: border-box;
+      width: var(--maxw);
+      max-width: 100%;
+      padding: 28px;
+      height: 140px;
+      /* Top Header Card Height */
+      background: var(--card-bg);
+      /* Set a darker card background */
+      border-radius: var(--radius);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      /* Subtle shadow for depth */
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: -0.5px;
+      color: var(--accent)
+    }
+
+    /* Highlight main name */
+    .title-sub {
+      color: var(--muted);
+      font-weight: 400
+    }
+
+    section {
+      margin-top: 28px
+    }
+
+    h2 {
+      margin: 0 0 15px 0;
+      font-size: 22px;
+      border-bottom: 2px solid rgba(72, 202, 228, 0.3);
+      padding-bottom: 5px;
+    }
+
+    /* Modern heading style */
+
+    .card {
+      background: var(--card-bg);
+      /* Use the dark background for cards */
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid rgba(72, 202, 228, 0.1);
+      /* Subtle accent border */
+    }
+
+    /* Grid setup for two columns on desktop */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    /* --- Specific Component Styles --- */
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(72, 202, 228, 0.3)
+    }
+
+    .link-card.special-card img {
+      object-position: center bottom;
+    }
+
+    .link-card a {
+      display: inline-block;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    /* Smooth hover effect */
+    .link-card a:hover {
+      color: #a8d5ff;
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    ul {
+      margin: 12px 0 0 24px
+    }
+
+    /* Skill Tags Style */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .skill {
+      background: var(--glass);
+      padding: 8px 14px;
+      border-radius: 30px;
+      /* Pill shape */
+      color: var(--accent);
+      /* Accent color for skills */
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid rgba(72, 202, 228, 0.3);
+    }
+
+    /* Helper Text/Links */
+    .banner-link {
+      display: block;
+      text-decoration: none;
+      color: inherit
+    }
+
+    .banner-title {
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+
+    /* --- Responsive Adjustment for Mobile (Single Column) --- */
+    @media(max-width:760px) {
+
+      /* Force the grid to display only one card per row on mobile */
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      body {
+        padding: 18px
+      }
+    }
+
+    /* --- Scroll Animation Styles --- */
+    /* Initial state: Hidden and slightly moved down */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    /* State when visible (will be applied by JS) */
+    .animate-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
+
 <body>
   <main class="wrap" role="main">
     <header style="display: flex; justify-content: space-between; align-items: center;">
@@ -131,31 +253,31 @@
         <h1>Yosuf Ahmed Elshaer</h1>
         <div class="title-sub">High School Student</div>
       </div>
-      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.JPG?raw=true" alt="Profile Photo" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);">
+      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.JPG?raw=true"
+        alt="Profile Photo"
+        style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);">
     </header>
 
 
     <!-- 2. About me -->
-    <section id="about" aria-labelledby="about-heading">
+    <section id="about" aria-labelledby="about-heading" class="animate-in">
       <h2 id="about-heading">About Me</h2>
       <div class="card">
-        <p>I am a highly adaptable High School student with extensive global exposure (Egypt, Saudi Arabia, UAE, US). 
-          I possess a strong foundation in coding, demonstrated by a GitHub project: OptiFetch, and a Python-Powered Telegram-Bot, and proficiency in utilizing advanced AI tools (Gemini, ElevenLabs, local AI models like Gemma/Qwen) for research and content creation. 
-          I have successfully applied these skills through educational STEAM projects and content creation through my YouTube channel: @ArabTeach_Edu; 
-          honing abilities in collaboration, time management, and multimedia production.
-
-</p>
+        <p id="about-text" class="typewriter-text"></p>
       </div>
     </section>
 
     <!-- 3. Projects -->
-    <section id="projects" aria-labelledby="projects-heading">
+    <section id="projects" aria-labelledby="projects-heading" class="animate-in">
       <h2 id="projects-heading">Projects & Achievements</h2>
       <div class="grid">
         <!-- YouTube Channel -->
         <div class="card link-card">
-          <a class="banner-link" href="https://youtube.com/@arabteach_edu?si=88OZ9lJXyiIIPfCz" target="_blank" rel="noopener">
-            <img src="https://yt3.googleusercontent.com/nDl-C5QvNgyWduXanEKr1kD06Vk3UaCQ-shxdOF4SEf3I-xCM0rv5rfzHVx-LbD1lv3r0ZZ1_w=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="YouTube channel banner">
+          <a class="banner-link" href="https://youtube.com/@arabteach_edu?si=88OZ9lJXyiIIPfCz" target="_blank"
+            rel="noopener">
+            <img
+              src="https://yt3.googleusercontent.com/nDl-C5QvNgyWduXanEKr1kD06Vk3UaCQ-shxdOF4SEf3I-xCM0rv5rfzHVx-LbD1lv3r0ZZ1_w=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj"
+              alt="YouTube channel banner">
             <div class="banner-title">YouTube Channel</div>
             <div class="muted">Educational Channel</div>
           </a>
@@ -164,7 +286,8 @@
         <!-- GitHub Project -->
         <div class="card link-card">
           <a class="banner-link" href="https://github.com/yosuf-e/OptiFetch/" target="_blank" rel="noopener">
-            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/GitHub_Background.png?raw=true" alt="GitHub project banner">
+            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/GitHub_Background.png?raw=true"
+              alt="GitHub project banner">
             <div class="banner-title">GitHub Project</div>
             <div class="muted">OptiFetch (Developed at age 15)</div>
           </a>
@@ -172,8 +295,9 @@
 
         <!-- Aircarft Class Photo -->
         <div class="card link-card">
-          <a class="banner-link" href="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Class_Photo_Aircrafts.jpg?raw=true" target="_blank" rel="noopener">
-            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Class_Photo_Aircrafts.jpg?raw=true" alt="Project photo banner">
+          <a class="banner-link" href="" target="_blank" rel="noopener">
+            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Class_Photo_Aircrafts.jpg?raw=true"
+              alt="Project photo banner">
             <div class="banner-title">9th Grade Project Photo</div>
             <div class="muted">Aircraft Project (Class Photo 2025)</div>
           </a>
@@ -181,16 +305,22 @@
 
         <!-- Hall Of Fame -->
         <div class="card link-card special-card">
-          <a class="banner-link" href="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true" target="_blank" rel="noopener">
-            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true" alt="Hall of Fame photo banner">
-            <div class="banner-title">Hall Of Fame (Class of 2024)</div>
+          <a class="banner-link"
+            href="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true"
+            target="_blank" rel="noopener">
+            <img
+              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true"
+              alt="Hall of Fame photo banner">
+            <div class="banner-title">Class Hall Of Fame</div>
             <div class="muted">Located at Buttom Left ✨</div>
           </a>
         </div>
         <!-- STEAM Video -->
         <div class="card link-card special-card">
           <a class="banner-link" href="https://www.youtube.com/watch?v=3iZfQ_wjrrI" target="_blank" rel="noopener">
-            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/10th-Grade-STEAM-Thumbnail.webp?raw=true" style="object-fit: cover; object-position: top;" alt="Video Thumbnail">
+            <img
+              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/10th-Grade-STEAM-Thumbnail.webp?raw=true"
+              style="object-fit: cover; object-position: top;" alt="Video Thumbnail">
             <div class="banner-title">STEAM Project</div>
             <div class="muted">10th-Grade Q4 STEAM Project</div>
           </a>
@@ -251,7 +381,7 @@
     </section>
 
     <!-- 6. Skills -->
-    <section id="skills" aria-labelledby="skills-heading">
+    <section id="skills" aria-labelledby="skills-heading" class="animate-in">
       <h2 id="skills-heading">Skills & Expertise</h2>
       <div class="card">
         <div class="skills">
@@ -270,64 +400,121 @@
       </div>
     </section>
 
-<!-- 7. Recommendation Letters -->
-<section class="recommendations-section" style="margin-top:40px;">
-  <h2 style="border-bottom: none; font-size:1.8em;">Recommendations</h2>
-  
-  <div class="grid"> 
-    
-    <!-- Card 1 -->
-    <div class="card"> 
-      <header>
-        <h3 style="margin:0; font-size:20px; color:var(--accent);">Name Here...</h3>
-        <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
-      </header>
-      <p style="margin:0; line-height:1.6;">
-        "Type Letter here..."
-      </p>
-    </div>
+    <!-- 7. Recommendation Letters -->
+    <section class="recommendations-section" style="margin-top:40px;" class="animate-in">
+      <h2 style="border-bottom: none; font-size:1.8em;">Recommendations</h2>
 
-    <!-- Card 2 -->
-    <div class="card"> 
-      <header>
-        <h3 style="margin:0; font-size:20px; color:var(--accent);">Name Here...</h3>
-        <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
-      </header>
-      <p style="margin:0; line-height:1.6;">
-        "Type Letter here..."
-      </p>
-    </div>
+      <div class="grid">
 
-  </div>
-</section>
+        <!-- Card 1 -->
+        <div class="card">
+          <header>
+            <h3 style="margin:0; font-size:20px; color:var(--accent);">Name Here...</h3>
+            <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
+          </header>
+          <p style="margin:0; line-height:1.6;">
+            "Type Letter here..."
+          </p>
+        </div>
 
-<!-- Contact Me -->
-<section id="contact" class="contact-section" aria-labelledby="contact-heading">
-  <h2 id="contact-heading" style="border-bottom: none; font-size:1.8em;">Get In Touch</h2>
+        <!-- Card 2 -->
+        <div class="card">
+          <header>
+            <h3 style="margin:0; font-size:20px; color:var(--accent);">Name Here...</h3>
+            <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
+          </header>
+          <p style="margin:0; line-height:1.6;">
+            "Type Letter here..."
+          </p>
+        </div>
 
-  <!-- Flex container for logos -->
-  <div style="display:flex; gap:70px; align-items:center; margin-top:15px;">
+      </div>
+    </section>
 
-    <!-- Email logo -->
-    <a href="mailto:yosuf.elshaer+portfolio@gmail.com">
-      <img src="https://cdn-icons-png.flaticon.com/512/18154/18154191.png" 
-           alt="Mail logo" style="height:40px;">
-    </a>
+    <!-- Contact Me -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-heading" class="animate-in">
+      <h2 id="contact-heading" style="border-bottom: none; font-size:1.8em;">Get In Touch</h2>
 
-    <!-- GitHub logo -->
-    <a href="https://github.com/yosuf-e" target="_blank" rel="noopener">
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" 
-           alt="GitHub logo" style="height:35px;">
-    </a>
-  </div>
-</section>
+      <!-- Flex container for logos -->
+      <div style="display:flex; gap:70px; align-items:center; margin-top:15px;">
 
-<!-- Footer / end gap so page end is visible -->
-<footer class="site-end" role="contentinfo" aria-label="Page end">
-  <div style="text-align: center; padding: 20px 0;">
-    <h6 style="margin:0;"> &copy; Yosuf A. Elshaer — 2026 (Developed at age 16)</h6>
-  </div>
-</footer>
+        <!-- Email logo -->
+        <a href="mailto:yosuf.elshaer+portfolio@gmail.com">
+          <img src="https://cdn-icons-png.flaticon.com/512/18154/18154191.png" alt="Mail logo" style="height:40px;">
+        </a>
+
+        <!-- GitHub logo -->
+        <a href="https://github.com/yosuf-e" target="_blank" rel="noopener">
+          <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png"
+            alt="GitHub logo" style="height:35px;">
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer / end gap so page end is visible -->
+    <footer class="site-end" role="contentinfo" aria-label="Page end">
+      <div style="text-align: center; padding: 20px 0;">
+        <h6 style="margin:0;"> &copy; Yosuf A. Elshaer — 2026 (Developed at age 16)</h6>
+      </div>
+    </footer>
+
+
+<!----------------
+ JavaScript Logic 
+ ----------------->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // --- SCROLL REVEAL IMPLEMENTATION ---
+        const observerOptions = {
+          root: null, // relative to the viewport
+          rootMargin: '0px',
+          threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            // If the element is intersecting (visible), add the 'is-visible' class
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target); // Stop observing once animated
+            }
+          });
+        }, observerOptions);
+
+        // Select all elements that should be animated
+        const elementsToAnimate = document.querySelectorAll('.animate-in');
+
+        // Start observing each element
+        elementsToAnimate.forEach(el => {
+          observer.observe(el);
+        });
+
+
+        // --- TYPEWRITER IMPLEMENTATION for About Me Card ---
+        const aboutTextElement = document.getElementById('about-text');
+        if (aboutTextElement) {
+          const fullText = "I am a highly adaptable High School student with extensive global exposure (Egypt, Saudi Arabia, UAE, US). I possess a strong foundation in coding, demonstrated by a GitHub project: OptiFetch, and a Python-Powered Telegram-Bot, and proficiency in utilizing advanced AI tools (Gemini, ElevenLabs, local AI models like Gemma/Qwen) for research and content creation. I have successfully applied these skills through educational STEAM projects and content creation through my YouTube channel: @ArabTeach_Edu; honing abilities in collaboration, time management, and multimedia production.";
+          let index = 0;
+          const typingSpeed = 15; // Speed of typing (milliseconds per character)
+
+          function typeWriter() {
+            if (index < fullText.length) {
+              // Display the next character
+              aboutTextElement.textContent += fullText.charAt(index);
+              index++;
+              setTimeout(typeWriter, typingSpeed);
+            } else {
+              // Typing finished
+            }
+          }
+
+          // Start the typewriter effect when the element is in view (or immediately on load)
+          // We start it immediately for a better initial impression.
+          typeWriter();
+        }
+      });
+    </script>
 
 </body>
+
 </html>
