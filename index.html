@@ -83,15 +83,9 @@
 
     h1 {
       margin: 0;
-      font-size: 32px;
+      font-size: 30px;
       letter-spacing: -0.5px;
       color: var(--accent)
-    }
-
-    /* Highlight main name */
-    .title-sub {
-      color: var(--muted);
-      font-weight: 400
     }
 
     section {
@@ -156,7 +150,8 @@
     }
 
     .muted {
-      color: var(--muted)
+      color: var(--muted);
+      font-style: italic;
     }
 
     ul {
@@ -216,6 +211,32 @@
       body {
         padding: 18px
       }
+
+      /* 1. target the main container holding the logo, title, and grade */
+  @media screen and (max-width: 768px) {
+  
+  /* Forces the main list item to stack the logo header and the grade vertically */
+  #edu-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  #certs-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Pushes the grade text down slightly so it isn't bunched up against the title */
+  .muted {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important; 
+    margin-left: 0 !important; /* Ensures it isn't indented accidentally */
+  }
+
+}
+
     }
 
     /* --- Scroll Animation Styles --- */
@@ -239,7 +260,7 @@
     <header style="display: flex; justify-content: space-between; align-items: center;">
       <div>
         <h1>Yosuf Ahmed Elshaer</h1>
-        <div class="title-sub">High School Student</div>
+        <div class="muted">High School Student</div>
       </div>
       <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/V2__Profile%20Photo.jpg?raw=true"
         alt="Profile Photo"
@@ -325,14 +346,14 @@
       <h2 id="education-heading">Education</h2>
       <div class="card">
         <ul>
-          <li>
+          <li id="edu-container">
             <div style="display:flex; align-items:center; gap:10px;">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7XziWhDu5Db1lbmdcBrkYKsCsvFPjSFcAkZA83MaWBYwAfl5m05HXxMmw&s=10" alt="Sama Logo" style="height:45px; border-radius: 5px;">
                 <strong style="font-size:1.1em;">Sama Winchester College (Cairo, EGY)</strong>
             </div>
             <p class="muted">Grade: 00.00%, 2025-2026</p>
           </li>
-          <li>
+          <li id="edu-container">
             <div style="display:flex; align-items:center; gap:10px;">
                 <img src="https://s3.amazonaws.com/rm3.photos.prod.readmedia.com/schools/20585/original/AV_Logo_Transparent_Background.png?1540224498" alt="Aviation Logo" class="Aviation-Logo" style="height:35px; border-radius: 5px;">
                 <strong style="font-size:1.1em;">Aviation High School (NYC, USA)</strong>
@@ -348,44 +369,44 @@
   <h2 id="certs-heading">Certifications & Training</h2> 
   <div class="card"> 
     <ul> 
-      <li style="display: flex; align-items: center; justify-content: space-between; width: 100%;"> 
+      <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;"> 
         <div style="display: flex; align-items: center;">
           <img src="https://engage.assets.thrillshare.com/jj54ekq2mhlmjir54bnt2189ieyj" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px; border-radius: 10%;"> 
           <a href="https://PDFNotAvaliable" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">College Board® SAT®</a> 
         </div>
-        <span class="muted" style="white-space: nowrap;">Score: PENDING</span> 
+        <span class="muted" style="margin-left: 5%; white-space: wrap;">Score: PENDING</span> 
       </li>
       
-          <li style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+          <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div style="display: flex; align-items: center;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px">
             <a href="https://notavaliable" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Python Essentials 1</a>
             </div>
-            <span class="muted" style="white-space: nowrap;">Cisco Networking Academy</span>
+            <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
             </li>
 
-          <li style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+          <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div style="display: flex; align-items: center;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px">
             <a href="https://www.credly.com/badges/69412dd0-6d7e-4c85-abb1-09ace5302756/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Introduction to Cybersecurity</a>
             </div>
-            <span class="muted" style="white-space: nowrap;">Cisco Networking Academy</span>
+            <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
             </li>
 
-          <li style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+          <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div style="display: flex; align-items: center;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px">
             <a href="https://www.credly.com/badges/e81ec231-7cf4-4d51-ada8-0b54002a4288/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Digital Safety and Security Awareness</a>
             </div>
-            <span class="muted" style="white-space: nowrap;">Cisco Networking Academy</span>
+            <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
             </li>
           
-          <li style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+          <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div style="display: flex; align-items: center;">
              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px">
             <a href="https://www.credly.com/badges/36c232c0-e53d-4896-a27d-ae6bd93e8384/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">English for IT: Advice and Time</a>
             </div>
-            <span class="muted" style="white-space: nowrap;">Cisco Networking Academy</span>
+            <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
             </li>
         </ul>
       </div>
@@ -395,17 +416,17 @@
     <section id="skills" aria-labelledby="skills-heading" class="animate-in">
     <h2 id="skills-heading">Skills</h2> 
       <div class="skills"> 
-        <span class="skill card">Python <img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" alt="Python" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
         <span class="skill card">HTML <img src="https://cdn-icons-png.flaticon.com/128/16020/16020759.png" alt="HTML" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
         <span class="skill card">Remotion <img src="https://www.remotion.dev/brand/public/logo/remotion/logo.svg" alt="Remotion" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
+        <span class="skill card">STEAM <img src="https://cdn-icons-png.flaticon.com/128/6476/6476027.png" alt="STEAM" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
         <span class="skill card">Time Management <img src="https://cdn-icons-png.flaticon.com/512/3842/3842536.png" alt="Time Management" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
         <span class="skill card">Cybersecurity <img src="https://cdn-icons-png.flaticon.com/128/2084/2084028.png" alt="Cybersecurity" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
         <span class="skill card">Artificial Intelligence (AI) <img src="https://cdn-icons-png.flaticon.com/128/16921/16921758.png" alt="AI" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
-        <span class="skill card">STEAM <img src="https://cdn-icons-png.flaticon.com/128/2602/2602414.png" alt="STEAM" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
         <span class="skill card">Team-Collaboration <img src="https://cdn-icons-png.flaticon.com/128/10822/10822425.png" alt="Team Collaboration" style="height:18px; margin-left:4px; vertical-align: middle;"></span>
         <span class="skill card">Swimming <img src="https://cdn-icons-png.flaticon.com/128/2264/2264829.png" alt="Swimming" style="height:18px; margin-left:4px; vertical-align: middle;"></span>  
-        <span class="skill card">Project/Content Creation <img src="https://cdn-icons-png.flaticon.com/128/12213/12213442.png" alt="Content Creation" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
         <span class="skill card">Self-Learning <img src="https://cdn-icons-png.flaticon.com/128/9722/9722699.png" alt="Self Learning" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
+        <span class="skill card">Project/Content Creation <img src="https://cdn-icons-png.flaticon.com/128/12213/12213442.png" alt="Content Creation" style="height:18px; margin-left:4px; vertical-align: middle;"></span> 
+        
     </div> 
 </div> 
 </section>
