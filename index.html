@@ -7,6 +7,11 @@
   <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/7770/7770659.png">
   <title>Yosuf Elshaer's Portfolio</title>
   <style>
+    /* Hide scrollbar for Chrome, Safari, Opera, and newer Edge */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
     /* --- Color Palette and Background Animation --- */
     :root {
       /* Animated Background Colors:*/
@@ -196,6 +201,154 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
+    /* ---------- Splash overlay that reuses your animated gradient ---------- */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: auto;
+  transition: opacity 400ms ease, visibility 400ms ease;
+  opacity: 1;
+  visibility: visible;
+  background: linear-gradient(60deg, var(--bg-start) 25%, var(--bg-mid) 50%, var(--bg-end) 75%);
+}
+
+
+/* Inner container uses your .card look but tuned for splash */
+.splash-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 28px;
+  border-radius: calc(var(--radius) + 6px);
+  background: linear-gradient(180deg, rgba(30,35,42,0.95), rgba(20,24,28,0.9));
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  transform: translateY(0);
+  max-width: min(420px, calc(100% - 48px));
+  width: 75%;
+  text-align: center;
+}
+
+/* Profile area */
+.profile-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Photo container */
+.profile-photo {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(72,202,228,0.12);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  display: grid;
+  place-items: center;
+}
+
+/* Image fits the circle */
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateZ(0);
+}
+
+/* Shine effect (pseudo-element) */
+.profile-photo::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -120%;
+  width: 60%;
+  height: 220%;
+  transform: rotate(30deg) translateX(0);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255,255,255,0) 100%);
+  filter: blur(6px);
+  opacity: 0.0;
+  pointer-events: none;
+  animation: shineSweep 1.5s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+/* Shine Animation */
+@keyframes shineSweep {
+  0% {
+    left: -120%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.25;
+  }
+  45% {
+    left: 120%;
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.25;
+  }
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+/* Title under photo */
+.splash-title {
+  margin: 0;
+  font-size: 28px;
+  color: var(--accent);
+  font-weight: 900;
+  letter-spacing: -0.2px;
+}
+
+/* Loading dots container */
+.loading-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+/* Individual dots */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--accent), #2ecbe8);
+  opacity: 0.25;
+  transform: translateY(0);
+  animation: dotPulse 1s infinite ease-in-out;
+}
+
+/* Staggered delays */
+.dot-1 { animation-delay: 0s; }
+.dot-2 { animation-delay: 0.15s; }
+.dot-3 { animation-delay: 0.3s; }
+
+@keyframes dotPulse {
+  0% { transform: translateY(0); opacity: 0.25; }
+  30% { transform: translateY(-8px); opacity: 1; }
+  60% { transform: translateY(0); opacity: 0.6; }
+  100% { transform: translateY(0); opacity: 0.25; }
+}
+
+/* Fade-out state */
+.splash.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
 
     /* --- Responsive Adjustments for Mobile --- */
     @media(max-width:760px) {
@@ -241,23 +394,51 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Makes Images Unselectable*/
+    .unselectable-image {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  user-select: none;         /* Standard */
+  -webkit-user-drag: none;   /* WebKit browsers */
+}
+
   </style>
 </head>
 
 <body>
+  <!--HTML WRAPPER-->
   <main class="wrap" role="main">
+
+    <!-- Splash Screen -->
+<div id="splash" class="splash" role="status" aria-live="polite" aria-label="Loading">
+  <div class="splash-inner animate-in" role="presentation">
+    <div class="profile-wrap">
+      <div class="profile-photo" id="profilePhoto">
+        <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.jpg?raw=true" class="unselectable-image" alt="Profile photo" draggable="false"/>
+      </div>
+      <h1 class="splash-title">Welcome!</h1>
+    </div>
+    <div class="loading-dots" aria-hidden="true">
+      <span class="dot dot-1"></span>
+      <span class="dot dot-2"></span>
+      <span class="dot dot-3"></span>
+    </div>
+  </div>
+</div>
+
+    <!--Top Header-->
     <header style="display: flex; justify-content: space-between; align-items: center;">
       <div>
         <h1>Yosuf Ahmed Elshaer</h1>
         <div class="muted">High School Student</div>
       </div>
-      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/V2__Profile%20Photo.jpg?raw=true"
+      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.jpg?raw=true"
         alt="Profile Photo"
         draggable="false"
         style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);"
-        class="animate-in">
+        class="unselectable-image animate-in">
     </header>
-
 
     <!-- 2. About me -->
     <section id="about" aria-labelledby="about-heading" class="animate-in">
@@ -274,41 +455,6 @@
     <section id="projects" aria-labelledby="projects-heading" class="animate-in">
       <h2 id="projects-heading">Projects & Achievements</h2>
       <div class="grid animate-in">
-        <!-- YouTube Channel -->
-        <div class="card link-card">
-          <a class="banner-link" href="https://youtube.com/@arabteach_edu?si=88OZ9lJXyiIIPfCz" target="_blank"
-            rel="noopener">
-            <img
-              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Arab%20Teach%20Banner.jpeg?raw=true"
-              alt="YouTube channel banner"
-              draggable="false">
-            <div class="banner-title">YouTube Channel</div>
-            <div class="muted">Educational Channel</div>
-          </a>
-        </div>
-
-        <!-- GitHub Project -->
-        <div class="card link-card">
-          <a class="banner-link" href="https://github.com/yosuf-e/OptiFetch/" target="_blank" rel="noopener">
-            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/GitHub_Background.png?raw=true"
-              alt="GitHub project banner"
-              draggable="false">
-            <div class="banner-title">OptiFetch</div>
-            <div class="muted">Internet Video Downloader</div>
-          </a>
-        </div>
-
-        <!-- Aircraft Class Photo -->
-        <div class="card link-card">
-          <a class="banner-link" href="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Class_Photo_Aircrafts.jpg?raw=true" target="_blank" rel="noopener">
-            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Class_Photo_Aircrafts.jpg?raw=true"
-              alt="Project photo banner"
-              draggable="false">
-            <div class="banner-title">Aviation H.S. Project Photo</div>
-            <div class="muted">Aircraft Project (Class Photo 2025)</div>
-          </a>
-        </div>
-
         <!-- Hall Of Fame -->
         <div class="card link-card">
           <a class="banner-link"
@@ -317,17 +463,54 @@
             <img
               src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true"
               style="object-fit: cover; object-position: bottom;"
-              alt="Hall of Fame photo banner" 
+              alt="Hall of Fame photo banner"
+              class="unselectable-image" 
               draggable="false">
             <div class="banner-title">Hall Of Fame (Class of 2024)</div>
             <div class="muted">Located at Bottom Left ✨</div>
+          </a>
+        </div>
+        <!-- Aircraft Class Photo -->
+        <div class="card link-card">
+          <a class="banner-link" href="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Aviation_HS_Project.jpg?raw=true" target="_blank" rel="noopener">
+            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Aviation_HS_Project.jpg?raw=true"
+              class="unselectable-image"  
+              alt="Project photo banner"
+              draggable="false">
+            <div class="banner-title">Aviation H.S. Project Photo</div>
+            <div class="muted">Aircraft Project (Class Photo 2025)</div>
+          </a>
+        </div>
+        <!-- YouTube Channel -->
+        <div class="card link-card">
+          <a class="banner-link" href="https://youtube.com/@arabteach_edu?si=88OZ9lJXyiIIPfCz" target="_blank"
+            rel="noopener">
+            <img
+              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Arab%20Teach%20Banner.jpeg?raw=true"
+              class="unselectable-image"
+              alt="YouTube channel banner"
+              draggable="false">
+            <div class="banner-title">YouTube Channel</div>
+            <div class="muted">Educational Channel</div>
+          </a>
+        </div>
+        <!-- GitHub Project -->
+        <div class="card link-card">
+          <a class="banner-link" href="https://github.com/yosuf-e/OptiFetch/" target="_blank" rel="noopener">
+            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/OptiFetch__Banner.jpeg?raw=true"
+              class="unselectable-image"
+              alt="GitHub project banner"
+              draggable="false">
+            <div class="banner-title">OptiFetch</div>
+            <div class="muted">Internet Video Downloader</div>
           </a>
         </div>
         <!-- STEAM Video -->
           <div class="card link-card">
           <a class="banner-link" href="https://www.youtube.com/watch?v=3iZfQ_wjrrI" target="_blank" rel="noopener">
             <img
-              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/10th-Grade-STEAM-Thumbnail.webp?raw=true"
+              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/10th%20Grade%20STEAM__Thumbnail.jpeg?raw=true"
+              class="unselectable-image"
               style="object-fit: cover; object-position: top;" 
               alt="Video Thumbnail"
               draggable="false">
@@ -340,6 +523,7 @@
           <a class="banner-link" href="https://yosuf-e.github.io/BrainQuest/" target="_blank" rel="noopener">
             <img
               src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/BrainQuest%20Website%20Preview.png?raw=true"
+              class="unselectable-image"
               style="object-fit: cover; object-position: top;" 
               alt="Website Preview"
               draggable="false">
@@ -359,14 +543,14 @@
         <ul>
           <li id="edu-container">
             <div style="display:flex; align-items:center; gap:10px;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7XziWhDu5Db1lbmdcBrkYKsCsvFPjSFcAkZA83MaWBYwAfl5m05HXxMmw&s=10" alt="Sama Logo" style="height:45px; border-radius: 5px;" draggable="false">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7XziWhDu5Db1lbmdcBrkYKsCsvFPjSFcAkZA83MaWBYwAfl5m05HXxMmw&s=10" alt="Sama Logo" class="unselectable-image" style="height:45px; border-radius: 5px;" draggable="false">
                 <strong style="font-size:1.1em;">Sama Winchester College (Cairo, EGY)</strong>
             </div>
             <p class="muted">Grade: 96.38%, 2025-2026</p>
           </li>
           <li id="edu-container">
             <div style="display:flex; align-items:center; gap:10px;">
-                <img src="https://s3.amazonaws.com/rm3.photos.prod.readmedia.com/schools/20585/original/AV_Logo_Transparent_Background.png?1540224498" alt="Aviation Logo" class="Aviation-Logo" style="height:35px; border-radius: 5px;" draggable="false">
+                <img src="https://s3.amazonaws.com/rm3.photos.prod.readmedia.com/schools/20585/original/AV_Logo_Transparent_Background.png?1540224498" alt="Aviation Logo" class="unselectable-image" style="height:35px; border-radius: 5px;" draggable="false">
                 <strong style="font-size:1.1em;">Aviation High School (NYC, USA)</strong>
             </div>
             <p class="muted">Grade: 96.19%, 2024-2025</p>
@@ -382,23 +566,23 @@
     <ul> 
       <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;"> 
         <div style="display: flex; align-items: center;">
-          <img src="https://engage.assets.thrillshare.com/jj54ekq2mhlmjir54bnt2189ieyj" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px; border-radius: 10%;" draggable="false"> 
+          <img src="https://engage.assets.thrillshare.com/jj54ekq2mhlmjir54bnt2189ieyj" alt="SAT-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px; border-radius: 10%;" class="unselectable-image" draggable="false"> 
           <a href="https://PDFNotAvaliable" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">College Board SAT®</a> 
         </div>
         <span class="muted" style="margin-left: 5%; white-space: wrap;">Score: PENDING</span> 
       </li>
       
-          <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+          <!-- <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div style="display: flex; align-items: center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" draggable="false">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" class="unselectable-image" draggable="false">
             <a href="https://notavaliable" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Python Essentials 1</a>
             </div>
             <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
-            </li>
+            </li> -->
 
           <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div style="display: flex; align-items: center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" draggable="false">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" class="unselectable-image" draggable="false">
             <a href="https://www.credly.com/badges/69412dd0-6d7e-4c85-abb1-09ace5302756/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Introduction to Cybersecurity</a>
             </div>
             <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
@@ -406,7 +590,7 @@
 
           <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div style="display: flex; align-items: center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" draggable="false">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" class="unselectable-image" draggable="false">
             <a href="https://www.credly.com/badges/e81ec231-7cf4-4d51-ada8-0b54002a4288/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Digital Safety and Security Awareness</a>
             </div>
             <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
@@ -414,7 +598,7 @@
           
           <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <div style="display: flex; align-items: center;">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" draggable="false">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" class="unselectable-image" draggable="false">
             <a href="https://www.credly.com/badges/36c232c0-e53d-4896-a27d-ae6bd93e8384/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">English for IT: Advice and Time</a>
             </div>
             <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
@@ -427,17 +611,17 @@
     <section id="skills" aria-labelledby="skills-heading" class="animate-in">
     <h2 id="skills-heading">Skills</h2> 
       <div class="skills"> 
-        <span class="skill card">Basic Python <img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" alt="Python" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
-        <span class="skill card">Basic HTML <img src="https://cdn-icons-png.flaticon.com/128/1532/1532556.png" alt="HTML" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
-        <span class="skill card">Remotion <img src="https://www.remotion.dev/brand/public/logo/remotion/logo.svg" alt="Remotion" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
-        <span class="skill card">STEAM <img src="https://cdn-icons-png.flaticon.com/128/6476/6476027.png" alt="STEAM" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
-        <span class="skill card">Time Management <img src="https://cdn-icons-png.flaticon.com/512/3842/3842536.png" alt="Time Management" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
-        <span class="skill card">Basic Cybersecurity <img src="https://cdn-icons-png.flaticon.com/128/2084/2084028.png" alt="Cybersecurity" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
-        <span class="skill card">Artificial Intelligence (AI) <img src="https://cdn-icons-png.flaticon.com/128/16921/16921758.png" alt="AI" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
-        <span class="skill card">Team-Collaboration <img src="https://cdn-icons-png.flaticon.com/128/10822/10822425.png" alt="Team Collaboration" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span>
-        <span class="skill card">Swimming <img src="https://cdn-icons-png.flaticon.com/128/2264/2264829.png" alt="Swimming" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span>  
-        <span class="skill card">Self-Learning <img src="https://cdn-icons-png.flaticon.com/128/9722/9722699.png" alt="Self Learning" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
-        <span class="skill card">Content Creation <img src="https://cdn-icons-png.flaticon.com/128/12213/12213442.png" alt="Content Creation" style="height:18px; margin-left:4px; vertical-align: middle;" draggable="false"></span> 
+        <span class="skill card">Basic Python <img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" alt="Python" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
+        <span class="skill card">Basic HTML <img src="https://cdn-icons-png.flaticon.com/128/1532/1532556.png" alt="HTML" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
+        <span class="skill card">Remotion <img src="https://www.remotion.dev/brand/public/logo/remotion/logo.svg" alt="Remotion" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
+        <span class="skill card">STEAM <img src="https://cdn-icons-png.flaticon.com/128/6476/6476027.png" alt="STEAM" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
+        <span class="skill card">Time Management <img src="https://cdn-icons-png.flaticon.com/512/3842/3842536.png" alt="Time Management" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
+        <span class="skill card">Basic Cybersecurity <img src="https://cdn-icons-png.flaticon.com/128/2084/2084028.png" alt="Cybersecurity" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
+        <span class="skill card">Artificial Intelligence (AI) <img src="https://cdn-icons-png.flaticon.com/128/16921/16921758.png" alt="AI" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
+        <span class="skill card">Team-Collaboration <img src="https://cdn-icons-png.flaticon.com/128/10822/10822425.png" alt="Team Collaboration" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span>
+        <span class="skill card">Swimming <img src="https://cdn-icons-png.flaticon.com/128/2264/2264829.png" alt="Swimming" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span>  
+        <span class="skill card">Self-Learning <img src="https://cdn-icons-png.flaticon.com/128/9722/9722699.png" alt="Self Learning" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
+        <span class="skill card">Content Creation <img src="https://cdn-icons-png.flaticon.com/128/12213/12213442.png" alt="Content Creation" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
         
     </div> 
 </div> 
@@ -453,7 +637,7 @@
         <!-- Card 1 -->
         <div class="card">
           <header>
-            <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" draggable="false" >
+            <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" class="unselectable-image" draggable="false" >
             <h3 style="margin:0; font-size:20px; color:var(--accent);">Name...</h3>
             <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
           </header>
@@ -465,7 +649,19 @@
         <!-- Card 2 -->
         <div class="card">
           <header>
-            <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" draggable="false" >
+            <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" class="unselectable-image" draggable="false" >
+            <h3 style="margin:0; font-size:20px; color:var(--accent);">Name...</h3>
+            <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
+          </header>
+          <p style="margin:0; line-height:1.6;">
+            Currently Unavailable...
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <header>
+            <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" class="unselectable-image" draggable="false" >
             <h3 style="margin:0; font-size:20px; color:var(--accent);">Name...</h3>
             <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
           </header>
@@ -485,12 +681,12 @@
 
         <!-- Email logo -->
         <a href="mailto:yosuf.elshaer+portfolio@gmail.com">
-          <img class="icon-white" src="https://cdn-icons-png.flaticon.com/128/3916/3916632.png" class="animate-in" alt="Mail logo" style="height:30px;" draggable="false">
+          <img class="icon-white unselectable-image" src="https://cdn-icons-png.flaticon.com/128/3916/3916632.png" class="animate-in" alt="Mail logo" style="height:30px;" draggable="false">
         </a>
 
         <!-- GitHub logo -->
         <a href="https://github.com/yosuf-e" target="_blank" rel="noopener">
-          <img class="icon-white" src="https://cdn-icons-png.flaticon.com/512/270/270798.png" class="animate-in" alt="GitHub logo" style="height:30px;" draggable="false">
+          <img class="icon-white unselectable-image" src="https://cdn-icons-png.flaticon.com/512/270/270798.png" class="animate-in" alt="GitHub logo" style="height:30px;" draggable="false">
         </a>
       </div>
     </section>
@@ -504,9 +700,6 @@
 
 
     <script>
-      /* ------------------
-        JavaScript Logic 
-      --------------------*/
       document.addEventListener('DOMContentLoaded', () => {
         // --- SCROLL REVEAL IMPLEMENTATION ---
         const observerOptions = {
@@ -533,6 +726,31 @@
           observer.observe(el);
         });
       });
+
+
+      // Splash Screen Logic // 
+      (function () {
+    const splash = document.getElementById('splash');
+    if (!splash) return;
+
+    // Public function to hide splash with smooth fade
+    window.hideSplash = function (delay = 300) {
+      if (!splash) return;
+      setTimeout(() => {
+        splash.classList.add('hidden');
+        setTimeout(() => {
+          if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
+        }, 500);
+      }, delay);
+    };
+
+    // Auto-hide when window load fires
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        window.hideSplash(200);
+      }, 1500); // 7.5 Seconds
+    });
+  })();
     </script>
 </body>
 </html>
