@@ -6,751 +6,792 @@
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/7770/7770659.png">
   <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/7770/7770659.png">
   <title>Yosuf Elshaer's Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    /* Hide scrollbar for Chrome, Safari, Opera, and newer Edge */
+  /* --- GOOGLE FONTS IMPORT --- */
+  @import url('https://googleapis.com');
+
+  /* Hide scrollbar for Chromium Browsers */
   &::-webkit-scrollbar {
     display: none;
   }
 
-    /* --- Color Palette and Background Animation --- */
-    :root {
-      /* Animated Background Colors:*/
-      --bg-start: #010b19;
-      --bg-mid: #001135;
-      --bg-end: #1f012e;
-
-      --accent: #48CAE4;
-      --text-color: #f0f6f9;
-      --card-bg: #1e232a;
-      /* Color for Secondary Text */
-      --muted: #8b949e;
-      /* Glass Effect Color */
-      --glass: rgba(30, 35, 42, 0.7);
-      --radius: 16px;
-      --maxw: 1000px;
-    }
-
-    /* Animated Background Gradient using keyframes */
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
-      background: linear-gradient(60deg, var(--bg-start) 25%, var(--bg-mid) 50%, var(--bg-end) 75%); /* Gradient Composition*/
-      color: var(--text-color);
-      animation: gradientBreathe 3s ease-in-out infinite; /* Speed */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      background-attachment: fixed;
-      padding: 28px;
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Keyframes that mimic inhaling and exhaling */
-    @keyframes gradientBreathe {
-      0%,
-      100% {
-        background-size: 150% 150%;
-        background-position: 0% 50%;
-      }
-      50% {
-        /* Inhale: Expand the gradient size and shift position */
-        background-size: 250% 250%;
-        background-position: 100% 50%;
-      }
-    }
-
-    /* --- Layout and Card Styles --- */
-    html,
-    body {
-      height: 100%
-    }
-
-    .wrap {
-      /* Top Header Card Height */
-      box-sizing: border-box;
-      width: var(--maxw);
-      max-width: 100%;
-      padding: 28px;
-      height: 140px;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    header {
-      display: flex;
-      flex-direction: column;
-      gap: 6px
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 30px;
-      letter-spacing: -0.5px;
-      color: var(--accent)
-    }
-
-    section {
-      margin-top: 28px
-    }
-
-    h2 {
-      margin: 0 0 15px 0;
-      font-size: 22px;
-      border-bottom: 2px solid rgba(72, 202, 228, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .icon-white {
-      filter: brightness(0) invert(1);
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 20px;
-      border: 1px solid rgba(72, 202, 228, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    /* Hover-Over Effect */
-    .card:hover {
-    border-color: var(--accent); /* Uses your existing accent color */
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-    transform: scale(1.05); /* Scales the card up by 5% */
-  }
+  /* --- CSS VARIABLES & RESET --- */
+  :root {
+    --bg-dark: #1e1e1e; /* Dark background */
+    --bg-darker: #121212;
+    --header-bar: #ffffff; /* White terminal header */
+    --accent-blue: #0078d7; /* Classic Terminal Blue */
+    --text-main: #f5f5f5;
+    --text-muted: #999999;
     
-    /* Grid Setup (Desktop):3 Columns */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    /* --- Specific Component Styles --- */
-    .link-card {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .link-card img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 1px solid rgba(72, 202, 228, 0.3)
-    }
-
-    .link-card a {
-      display: inline-block;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    ul {
-      margin: 12px 0 0 24px
-    }
-
-    /* Skill Tags Style */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px
-    }
-
-    .skill {
-      background: var(--glass);
-      padding: 8px 14px;
-      border-radius: 30px;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 14px;
-      border: 1px solid rgba(72, 202, 228, 0.3);
-    }
-
-    /* Helper Text/Links */
-    .banner-link {
-      display: block;
-      text-decoration: none;
-      color: inherit
-    }
-
-    .banner-title {
-      font-weight: 700;
-      margin-top: 6px;
-    }
-
-    .card ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .card li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* ---------- Splash overlay that reuses your animated gradient ---------- */
-.splash {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  pointer-events: auto;
-  transition: opacity 400ms ease, visibility 400ms ease;
-  opacity: 1;
-  visibility: visible;
-  background: linear-gradient(60deg, var(--bg-start) 25%, var(--bg-mid) 50%, var(--bg-end) 75%);
-}
-
-
-/* Inner container uses your .card look but tuned for splash */
-.splash-inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  padding: 28px;
-  border-radius: calc(var(--radius) + 6px);
-  background: linear-gradient(180deg, rgba(30,35,42,0.95), rgba(20,24,28,0.9));
-  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
-  transform: translateY(0);
-  max-width: min(420px, calc(100% - 48px));
-  width: 75%;
-  text-align: center;
-}
-
-/* Profile area */
-.profile-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Photo container */
-.profile-photo {
-  position: relative;
-  width: 128px;
-  height: 128px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid rgba(72,202,228,0.12);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
-  display: grid;
-  place-items: center;
-}
-
-/* Image fits the circle */
-.profile-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: translateZ(0);
-}
-
-/* Shine effect (pseudo-element) */
-.profile-photo::after {
-  content: "";
-  position: absolute;
-  top: -40%;
-  left: -120%;
-  width: 60%;
-  height: 220%;
-  transform: rotate(30deg) translateX(0);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255,255,255,0) 100%);
-  filter: blur(6px);
-  opacity: 0.0;
-  pointer-events: none;
-  animation: shineSweep 1.5s ease-in-out infinite;
-  mix-blend-mode: screen;
-}
-
-/* Shine Animation */
-@keyframes shineSweep {
-  0% {
-    left: -120%;
-    opacity: 0;
+    /* UNIFIED RETRO TYPOGRAPHY ACROSS EVERY CONCEPT */
+    --font-head: 'VT323', monospace;
+    --font-body: 'VT323', monospace;
   }
-  10% {
-    opacity: 0.25;
+
+  * { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    outline: none; 
+    font-family: var(--font-body) !important; /* Forces universal retro font fallback */
   }
-  45% {
-    left: 120%;
-    opacity: 0.9;
-  }
-  70% {
-    opacity: 0.25;
-  }
-  100% {
-    left: 120%;
-    opacity: 0;
-  }
-}
-
-/* Title under photo */
-.splash-title {
-  margin: 0;
-  font-size: 28px;
-  color: var(--accent);
-  font-weight: 900;
-  letter-spacing: -0.2px;
-}
-
-/* Loading dots container */
-.loading-dots {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 6px;
-}
-
-/* Individual dots */
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, var(--accent), #2ecbe8);
-  opacity: 0.25;
-  transform: translateY(0);
-  animation: dotPulse 1s infinite ease-in-out;
-}
-
-/* Staggered delays */
-.dot-1 { animation-delay: 0s; }
-.dot-2 { animation-delay: 0.15s; }
-.dot-3 { animation-delay: 0.3s; }
-
-@keyframes dotPulse {
-  0% { transform: translateY(0); opacity: 0.25; }
-  30% { transform: translateY(-8px); opacity: 1; }
-  60% { transform: translateY(0); opacity: 0.6; }
-  100% { transform: translateY(0); opacity: 0.25; }
-}
-
-/* Fade-out state */
-.splash.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-    /* --- Responsive Adjustments for Mobile --- */
-    @media(max-width:760px) {
-      
-      /* Force the grid to display only one card per row on mobile */
-      .grid {
-        grid-template-columns: 1fr
-      }
-      body {
-        padding: 18px
-      }
   
-  /* Forces secondary text to stack vertically */
-  #edu-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
+  body { 
+    background-color: var(--bg-darker); 
+    color: var(--text-main); 
+    font-family: var(--font-body); 
+    line-height: 1.4; 
+    overflow-x: hidden;
+    font-size: 1.25rem; /* Raised slightly for low-res retro fonts readability */
   }
 
-  #certs-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
+  /* --- SPLASH SCREEN (WINDOWS 95 MS-DOS STYLE) --- */ 
+#splash { 
+  position: fixed; 
+  inset: 0; 
+  z-index: 9999; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  background-color: var(--bg-darker);
+  transition: opacity 0.8s ease, visibility 0.8s; 
+} 
 
-  .muted {
-    margin-top: 8px !important;
-    margin-bottom: 8px !important; 
-    margin-left: 0 !important;
-  }
+.terminal-window { 
+  width: 90%; 
+  max-width: 500px; 
+  background: #c0c0c0;
+  border-top: 2px solid var(--header-bar);
+  border-left: 2px solid var(--header-bar);
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  box-shadow: 1px 1px 0px 0px #000;
+  padding: 2px;
+  overflow: hidden; 
+} 
+
+.terminal-header { 
+  background: #000080;
+  padding: 4px 6px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  user-select: none;
+} 
+
+.terminal-title { 
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12px; 
+  color: var(--header-bar); 
+} 
+
+.window-controls .close-btn { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px; 
+  height: 14px; 
+  background: #c0c0c0; 
+  border-top: 1px solid var(--header-bar);
+  border-left: 1px solid var(--header-bar);
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+} 
+.close-btn::before {
+  content: "×";
 }
 
-    /* --- Scroll Animation Styles --- */
-    /* Initial state: Hidden and slightly moved down */
-    .animate-in {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
+.terminal-body { 
+  padding: 12px; 
+  background: var(--bg-dark); 
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--header-bar); 
+  min-height: 320px;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid var(--header-bar);
+  border-bottom: 2px solid var(--header-bar);
+  display: flex;
+  flex-direction: column;
+} 
 
-    /* State when visible (will be applied by JS) */
-    .animate-in.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Makes Images Unselectable*/
-    .unselectable-image {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none;    /* Firefox */
-  user-select: none;         /* Standard */
-  -webkit-user-drag: none;   /* WebKit browsers */
+/* Text Logs styling */
+.log-line {
+  margin-bottom: 3px;
+  white-space: pre-wrap;
 }
 
-  </style>
+.accent-text {
+  color: #55ff55; /* Lime green status accent */
+}
+
+/* Container hosting the rendering face grid */
+.face-canvas {
+  margin: 12px 0;
+  color: #ffff55;
+  font-weight: bold;
+  line-height: 1.2;
+  white-space: pre;
+}
+
+.cursor { 
+  display: inline-block; 
+  width: 8px; 
+  height: 14px; 
+  background-color: var(--header-bar); 
+  animation: blink 1s step-end infinite; 
+  margin-left: 4px;
+  vertical-align: middle;
+} 
+
+@keyframes blink { 
+  0%, 100% { opacity: 1; } 
+  50% { opacity: 0; } 
+}
+
+
+  /* --- MAIN LAYOUT --- */
+  .container { width: 90%; max-width: 1200px; margin: 0 auto; padding-bottom: 60px; }
+
+  header { 
+    padding: 40px 20px; 
+    text-align: center; 
+    border-bottom: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* --- WINDOWS 95 PROFILE CONTAINER WRAPPER --- */
+  .profile-win95-card {
+    background: #c0c0c0; 
+    border-top: 2px solid var(--header-bar);
+    border-left: 2px solid var(--header-bar);
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: 1px 1px 0px 0px var(--bg-dark);
+    padding: 3px; 
+    width: 120px; 
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  .profile-win95-card .window-header {
+    background: #000080; 
+    color: var(--header-bar);
+    padding: 2px 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .profile-win95-card .card-body {
+    /* Explicitly forces the image viewport container boundaries to 100px by 100px */
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    background: var(--header-bar);
+    margin-top: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid var(--header-bar);
+    border-bottom: 2px solid var(--header-bar);
+    overflow: hidden;
+  }
+
+  /* Boxy image shape adjustment inside the container */
+  .profile-img { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 0; 
+    object-fit: cover; 
+    filter: grayscale(20%); 
+    transition: 0.3s;
+    border: none;
+  }
+
+  header h1 { font-size: 2.5rem; color: var(--header-bar); margin-top: 10px; }
+  .role-badge { display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.1); border-radius: 0; border: 1px dashed #666; font-size: 1rem; color: #ccc; margin-top: 5px;}
+
+  section { padding: 40px 0; scroll-margin-top: 60px; }
+  
+  .section-title { 
+    font-size: 2.2rem; margin-bottom: 25px; color: var(--header-bar); 
+    display: inline-block; border-left: 4px solid var(--accent-blue); padding-left: 10px;
+  }
+
+  /* --- RETRO WINDOW CARDS (Windows 95 Style Grid Structure) --- */
+  .grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); /* Displays exactly 3 cards side-by-side by default */
+    gap: 25px; 
+  }
+
+  .card { 
+    background: #c0c0c0; 
+    border-radius: 0; 
+    border-top: 2px solid var(--header-bar);
+    border-left: 2px solid var(--header-bar);
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: 1px 1px 0px 0px #000;
+    padding: 3px; 
+    overflow: hidden; 
+    position: relative;
+    transition: transform 0.15s ease;
+  }
+
+  .window-header {
+    background: #808080; 
+    color: #c0c0c0; 
+    padding: 3px 4px; 
+    font-weight: bold;
+    font-size: 0.9rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+
+  .window-controls { 
+    display: flex; 
+    gap: 2px; 
+  }
+
+  .window-controls span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 14px;
+    background: #c0c0c0;
+    color: #000;
+    font-size: 9px;
+    font-weight: bold;
+    border-top: 1px solid var(--header-bar);
+    border-left: 1px solid var(--header-bar);
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .window-controls span:nth-child(1)::before { content: "_"; font-size: 8px; vertical-align: bottom; }
+  .window-controls span:nth-child(2)::before { content: "🗖"; font-size: 7px; }
+  .window-controls span:nth-child(3)::before { content: "×"; font-size: 11px; }
+
+  .card-body { 
+    padding: 15px; 
+    background: var(--header-bar); 
+    color: #000000; 
+    margin-top: 3px;
+    min-height: 100px;
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid var(--header-bar);
+    border-bottom: 2px solid var(--header-bar);
+    box-shadow: -1px -1px 0px 0px #000 inset;
+  }
+
+  .banner-title { 
+    font-weight: 700; 
+    margin-bottom: 5px; 
+    display: block; 
+    font-size: 1.4rem;
+  }
+
+  .muted { 
+    color: #555555; 
+    font-size: 1rem; 
+  }
+
+  /* --- RETRO HOVER EFFECTS --- */
+  .card:hover .window-header { 
+    background: #000080; 
+    color: var(--header-bar); 
+  }
+
+  .card:hover { 
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  }
+
+  /* --- EDUCATION & CERTS (List Style) --- */
+  .list-item { 
+    display: flex; align-items: center; gap: 15px; padding: 12px 0; border-bottom: 1px solid #333;
+  }
+  
+  .list-item:last-child { border-bottom: none; }
+  
+  .logo-img { 
+    width: 45px; height: 45px; object-fit: contain; background: transparent !important; padding: 0 !important; 
+    filter: grayscale(100%); transition: 0.3s;
+  }
+
+  .list-item:hover .logo-img { filter: grayscale(0%); border: 1px solid var(--accent-blue); padding: 2px;}
+
+  .right-text { margin-left: auto; color: var(--accent-blue); font-weight: bold; }
+
+  /* --- SKILLS (Tags & New Retro Hover Effect) --- */
+  .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+  
+  .skill-tag { 
+    background: #c0c0c0; /* Swapped modern dark gray to classic light gray layout background */
+    color: #000000;      /* Dark text for visibility */
+    border-top: 2px solid var(--header-bar);
+    border-left: 2px solid var(--header-bar);
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: 1px 1px 0px 0px #000;
+    padding: 6px 14px; 
+    border-radius: 0; 
+    font-size: 1.1rem; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+
+  /* Simulates pressing down an authentic Windows 95 command button UI element */
+  .skill-tag:hover {
+    background: #dcdcdc;
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid var(--header-bar);
+    border-bottom: 2px solid var(--header-bar);
+    box-shadow: none;
+    transform: translate(1px, 1px);
+    color: var(--accent-blue); /* Highlighting text color on interactive hover states */
+  }
+
+  /* --- CONTACT (Left Aligned) --- */
+  #contact h2::after { background: var(--accent-blue); }
+  
+  .social-links { 
+    display: flex; gap: 30px; justify-content: flex-start; margin-top: 20px; align-items: center; 
+  }
+
+  .social-icon { width: 40px; height: 40px; transition: transform 0.3s; filter: grayscale(100%); }
+  
+  .social-icon:hover { 
+    transform: translateY(-5px) scale(1.1); 
+    filter: grayscale(0%); color: var(--accent-blue);
+  }
+
+  /* --- FOOTER --- */
+  footer { text-align: center; padding: 40px 20px; color: #666; font-size: 1.1rem; border-top: 1px solid #333; margin-top: 40px;}
+
+  /* --- ANIMATION UTILS (Scroll Reveal) --- */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  /* --- RESPONSIVE MEDIA QUERIES --- */
+  @media(max-width: 768px) {
+    header h1 { font-size: 2rem; }
+    
+    /* Drops the grid architecture to instantly force only 1 card layout on phone viewports */
+    .grid { 
+      grid-template-columns: 1fr; 
+    } 
+    
+    body { padding: 20px; }
+    .list-item { flex-direction: column; align-items: flex-start; gap: 5px;}
+  }
+</style>
+
 </head>
 
 <body>
-  <!--HTML WRAPPER-->
-  <main class="wrap" role="main">
 
-    <!-- Splash Screen -->
-<div id="splash" class="splash" role="status" aria-live="polite" aria-label="Loading">
-  <div class="splash-inner animate-in" role="presentation">
-    <div class="profile-wrap">
-      <div class="profile-photo" id="profilePhoto">
-        <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.jpg?raw=true" class="unselectable-image" alt="Profile photo" draggable="false"/>
+  <!-- SPLASH SCREEN (TERMINAL STYLE) -->
+<div id="splash">
+  <div class="terminal-window reveal active">
+    <div class="terminal-header">
+      <span class="terminal-title">bash — "npx http-server"</span>
+      <div class="window-controls">
+        <span class="close-btn" id="close-splash-btn"></span>
       </div>
-      <h1 class="splash-title">Welcome!</h1>
     </div>
-    <div class="loading-dots" aria-hidden="true">
-      <span class="dot dot-1"></span>
-      <span class="dot dot-2"></span>
-      <span class="dot dot-3"></span>
+    <div class="terminal-body" id="splash-content">
+      <!-- Animated steps and pixel face will render here -->
     </div>
   </div>
 </div>
 
-    <!--Top Header-->
-    <header style="display: flex; justify-content: space-between; align-items: center;">
-      <div>
-        <h1>Yosuf Ahmed Elshaer</h1>
-        <div class="muted">High School Student</div>
-      </div>
-      <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Profile%20Photo.jpg?raw=true"
-        alt="Profile Photo"
-        draggable="false"
-        style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);"
-        class="unselectable-image animate-in">
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- HEADER -->
+    <header>
+      <img src="Assets/Profile_Photo.jpg" alt="Profile Photo" class="profile-win95-card" draggable="false"/>
+      <h1>Yosuf Ahmed Elshaer</h1>
+      <div class="role-badge">High School Student & Developer</div>
     </header>
 
-    <!-- 2. About me -->
-    <section id="about" aria-labelledby="about-heading" class="animate-in">
-      <h2 id="about-heading">About Me</h2>
-      <div class="card">
-        <p>I am a highly adaptable High School student with extensive global exposure (Egypt, Saudi Arabia, UAE, US). 
-          I possess a strong foundation in coding, demonstrated by a GitHub project: OptiFetch, and a Python-Powered Telegram-Bot, 
-          and proficiency in utilizing advanced AI tools (Gemini, ElevenLabs, local AI models like Gemma/Qwen) for research and content creation. 
-          I have successfully applied these skills through educational STEAM projects and content creation through my YouTube channel: @ArabTeach_Edu; honing abilities in collaboration, time management, and multimedia production.<p>
-      </div>
+    <!-- ABOUT ME -->
+    <section id="about" class="reveal">
+      <h2 class="section-title">About Me</h2>
+      <p style="color: #ccc; max-width: 800px;">
+        I am a High School student with extensive global travel experience, having resided in Egypt, Saudi Arabia, the UAE, and The United States of America. 
+          I possess an adequate foundation in coding, demonstrated by my GitHub projects: <a href="https://github.com/yosuf-e/OptiFetch/" style="color:var(--header-bar); text-decoration:underline;">OptiFetch</a> and <a href="https://QuestCraft.pages.dev" style="color:var(--header-bar); text-decoration:underline;">QuestCraft </a>. 
+          I have also created a python-powered-telegram-bot whose main goal is to send daily messages chronologically based on the date. 
+          Moreover, I am proficient in utilizing advanced AI tools like: Google Gemini, Google Notebook, ElevenLabs, Google Flow, and local AI models like Gemma/Qwen for research and content creation. 
+          I have successfully applied these skills through educational STEAM projects and content creation through my YouTube channel: <a href="https://youtube.com/@arabteach_edu?si=88OZ9lJXyiIIPfCz" style="color:var(--header-bar); text-decoration:underline;">@ArabTeach_Edu.</a>
+      </p>
     </section>
 
-    <!-- 3. Projects -->
-    <section id="projects" aria-labelledby="projects-heading" class="animate-in">
-      <h2 id="projects-heading">Projects & Achievements</h2>
-      <div class="grid animate-in">
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal">
+      <h2 class="section-title">Projects & Achievements</h2>
+      <div class="grid">
         <!-- Hall Of Fame -->
-        <div class="card link-card">
-          <a class="banner-link"
-            href="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true"
-            target="_blank" rel="noopener">
-            <img
-              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Hall%20of%20Fame%20(Class%20of%202024).JPG?raw=true"
-              style="object-fit: cover; object-position: bottom;"
-              alt="Hall of Fame photo banner"
-              class="unselectable-image" 
-              draggable="false">
-            <div class="banner-title">Hall Of Fame (Class of 2024)</div>
-            <div class="muted">Located at Bottom Left ✨</div>
+        <div class=" card project-card">
+            <div class="window-header">Hall of Fame.exe</div>
+            <div class="card-body">
+              <img src="Assets/Hall_of_Fame.JPG" alt="Hall of Fame photo banner" style="width:100%; height:auto; border-radius:4px;" />
+              <span class="banner-title">Hall Of Fame</span>
+              <span class="muted">Class of 2024</span>
+            </div>
           </a>
         </div>
-        <!-- Aircraft Class Photo -->
-        <div class="card link-card">
-          <a class="banner-link" href="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Aviation_HS_Project.jpg?raw=true" target="_blank" rel="noopener">
-            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Aviation_HS_Project.jpg?raw=true"
-              class="unselectable-image"  
-              alt="Project photo banner"
-              draggable="false">
-            <div class="banner-title">Aviation H.S. Project Photo</div>
-            <div class="muted">Aircraft Project (Class Photo 2025)</div>
+
+        <!-- Aviation Project -->
+        <div class="card project-card">
+            <div class="window-header">Aviation_Project.exe</div>
+            <div class="card-body">
+              <img src="Assets/Aviation_Project.jpg" alt="Aircraft Project" style="width:100%; height:auto; border-radius:4px;" />
+              <span class="banner-title">Aviation H.S. Project</span>
+              <span class="muted">Class Photo 2025</span>
+            </div>
           </a>
         </div>
+
         <!-- YouTube Channel -->
-        <div class="card link-card">
-          <a class="banner-link" href="https://youtube.com/@arabteach_edu?si=88OZ9lJXyiIIPfCz" target="_blank"
-            rel="noopener">
-            <img
-              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/Arab%20Teach%20Banner.jpeg?raw=true"
-              class="unselectable-image"
-              alt="YouTube channel banner"
-              draggable="false">
-            <div class="banner-title">YouTube Channel</div>
-            <div class="muted">Educational Channel</div>
-          </a>
-        </div>
-        <!-- GitHub Project -->
-        <div class="card link-card">
-          <a class="banner-link" href="https://github.com/yosuf-e/OptiFetch/" target="_blank" rel="noopener">
-            <img src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/OptiFetch__Banner.jpeg?raw=true"
-              class="unselectable-image"
-              alt="GitHub project banner"
-              draggable="false">
-            <div class="banner-title">OptiFetch</div>
-            <div class="muted">Internet Video Downloader</div>
-          </a>
-        </div>
-        <!-- STEAM Video -->
-          <div class="card link-card">
-          <a class="banner-link" href="https://www.youtube.com/watch?v=3iZfQ_wjrrI" target="_blank" rel="noopener">
-            <img
-              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/10th%20Grade%20STEAM__Thumbnail.jpeg?raw=true"
-              class="unselectable-image"
-              style="object-fit: cover; object-position: top;" 
-              alt="Video Thumbnail"
-              draggable="false">
-            <div class="banner-title">STEAM Project</div>
-            <div class="muted">10th-Grade Q4 STEAM Project</div>
-          </a>
-        </div>
-        <!-- BrainQuest -->
-          <div class="card link-card">
-          <a class="banner-link" href="https://yosuf-e.github.io/BrainQuest/" target="_blank" rel="noopener">
-            <img
-              src="https://github.com/yosuf-e/Yosuf-Portfolio/blob/main/Assets/BrainQuest%20Website%20Preview.png?raw=true"
-              class="unselectable-image"
-              style="object-fit: cover; object-position: top;" 
-              alt="Website Preview"
-              draggable="false">
-            <div class="banner-title">BrainQuest</div>
-            <div class="muted">Gamified Educational Platform</div>
+        <div class="card project-card">
+          <a href="https://youtube.com/@arabteach_edu?si=88OZ9lJXyiIIPfCz" target="_blank" rel="noopener">
+            <div class="window-header">YouTube_Channel.exe</div>
+            <div class="card-body">
+              <img src="Assets/YouTube_Banner.jpeg" alt="YouTube Channel" style="width:100%; height:auto; border-radius:4px;" />
+              <span class="banner-title">YouTube Channel</span>
+              <span class="muted">@ArabTeach_Edu</span>
+            </div>
           </a>
         </div>
 
-      </div>
+        <!-- OptiFetch -->
+        <div class="card project-card">
+          <a href="https://github.com/yosuf-e/OptiFetch/" target="_blank" rel="noopener">
+            <div class="window-header">OptiFetch.exe</div>
+            <div class="card-body">
+              <img src="Assets/OptiFetch__Banner.jpeg" alt="OptiFetch Banner" style="width:100%; height:auto; border-radius:4px;" />
+              <span class="banner-title">OptiFetch</span>
+              <span class="muted">Internet Video Downloader</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- STEAM Project -->
+        <div class="card project-card">
+          <a href="https://www.youtube.com/watch?v=3iZfQ_wjrrI" target="_blank" rel="noopener">
+            <div class="window-header">STEAM_Project.exe</div>
+            <div class="card-body">
+              <img src="Assets/10th_Grade_STEAM__Thumbnail.jpeg" alt="STEAM Project" style="width:100%; height:auto; border-radius:4px;" />
+              <span class="banner-title">STEAM Project</span>
+              <span class="muted">10th-Grade Q4 Project</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- QuestCraft -->
+        <div class="card project-card">
+          <a href="https://QuestCraft.pages.dev" target="_blank" rel="noopener">
+            <div class="window-header">QuestCraft.exe</div>
+            <div class="card-body">
+              <img src="Assets/QuestCraft_Preview.png" alt="QuestCraft" style="width:100%; height:auto; border-radius:4px;" />
+              <span class="banner-title">QuestCraft</span>
+              <span class="muted">Gamified Educational Platform</span>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- 4. Education -->
-    <section id="education" aria-labelledby="education-heading" class="animate-in">
-      <h2 id="education-heading">Education</h2>
-      <div class="card">
-        <ul>
-          <li id="edu-container">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7XziWhDu5Db1lbmdcBrkYKsCsvFPjSFcAkZA83MaWBYwAfl5m05HXxMmw&s=10" alt="Sama Logo" class="unselectable-image" style="height:45px; border-radius: 5px;" draggable="false">
-                <strong style="font-size:1.1em;">Sama Winchester College (Cairo, EGY)</strong>
-            </div>
-            <p class="muted">Grade: 96.38%, 2025-2026</p>
-          </li>
-          <li id="edu-container">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <img src="https://s3.amazonaws.com/rm3.photos.prod.readmedia.com/schools/20585/original/AV_Logo_Transparent_Background.png?1540224498" alt="Aviation Logo" class="unselectable-image" style="height:35px; border-radius: 5px;" draggable="false">
-                <strong style="font-size:1.1em;">Aviation High School (NYC, USA)</strong>
-            </div>
-            <p class="muted">Grade: 96.19%, 2024-2025</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 5. Certifications / Training --> 
-<section id="certs" aria-labelledby="certs-heading" class="animate-in"> 
-  <h2 id="certs-heading">Certifications & Training</h2> 
-  <div class="card"> 
-    <ul> 
-      <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;"> 
-        <div style="display: flex; align-items: center;">
-          <img src="https://engage.assets.thrillshare.com/jj54ekq2mhlmjir54bnt2189ieyj" alt="SAT-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px; border-radius: 10%;" class="unselectable-image" draggable="false"> 
-          <a href="https://PDFNotAvaliable" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">College Board SAT®</a> 
+    <!-- EDUCATION -->
+<section id="education" class="reveal">
+  <h2 class="section-title">Education</h2>
+  <ul class="edu-list">
+    
+    <li class="list-item">
+      <div class="left-content">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7XziWhDu5Db1lbmdcBrkYKsCsvFPjSFcAkZA83MaWBYwAfl5m05HXxMmw&s=10" style="border-radius: 10%;" alt="Sama Logo" class="logo-img"/>
+        <div>
+          <strong>Sama Winchester College</strong><br>
+          <span style="font-size: 0.8rem; color: #999;">Cairo, EGY</span>
         </div>
-        <span class="muted" style="margin-left: 5%; white-space: wrap;">Score: PENDING</span> 
-      </li>
-      
-          <!-- <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-            <div style="display: flex; align-items: center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" class="unselectable-image" draggable="false">
-            <a href="https://notavaliable" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Python Essentials 1</a>
-            </div>
-            <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
-            </li> -->
-
-          <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-            <div style="display: flex; align-items: center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" class="unselectable-image" draggable="false">
-            <a href="https://www.credly.com/badges/69412dd0-6d7e-4c85-abb1-09ace5302756/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Introduction to Cybersecurity</a>
-            </div>
-            <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
-            </li>
-
-          <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-            <div style="display: flex; align-items: center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" class="unselectable-image" draggable="false">
-            <a href="https://www.credly.com/badges/e81ec231-7cf4-4d51-ada8-0b54002a4288/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">Digital Safety and Security Awareness</a>
-            </div>
-            <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
-            </li>
-          
-          <li id="certs-container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-            <div style="display: flex; align-items: center;">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" style="height:40px; margin-right: 10px; margin-bottom: 10px" class="unselectable-image" draggable="false">
-            <a href="https://www.credly.com/badges/36c232c0-e53d-4896-a27d-ae6bd93e8384/public_url" target="_blank" rel="noopener" style="color:var(--accent); display: inline-block; text-align: left; width: 90%;">English for IT: Advice and Time</a>
-            </div>
-            <span class="muted" style="margin-left: 5%; white-space: wrap;">Cisco Networking Academy</span>
-            </li>
-        </ul>
       </div>
-    </section>
+      <span class="right-text score-blue">Grade: 00.00% (2026-2027)</span>
+    </li>
 
-    <!-- 6. Skills -->
-    <section id="skills" aria-labelledby="skills-heading" class="animate-in">
-    <h2 id="skills-heading">Skills</h2> 
-      <div class="skills"> 
-        <span class="skill card">Basic Python <img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" alt="Python" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        <span class="skill card">Basic HTML <img src="https://cdn-icons-png.flaticon.com/128/1532/1532556.png" alt="HTML" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        <span class="skill card">Remotion <img src="https://www.remotion.dev/brand/public/logo/remotion/logo.svg" alt="Remotion" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        <span class="skill card">STEAM <img src="https://cdn-icons-png.flaticon.com/128/6476/6476027.png" alt="STEAM" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        <span class="skill card">Time Management <img src="https://cdn-icons-png.flaticon.com/512/3842/3842536.png" alt="Time Management" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        <span class="skill card">Basic Cybersecurity <img src="https://cdn-icons-png.flaticon.com/128/2084/2084028.png" alt="Cybersecurity" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        <span class="skill card">Artificial Intelligence (AI) <img src="https://cdn-icons-png.flaticon.com/128/16921/16921758.png" alt="AI" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        <span class="skill card">Team-Collaboration <img src="https://cdn-icons-png.flaticon.com/128/10822/10822425.png" alt="Team Collaboration" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span>
-        <span class="skill card">Swimming <img src="https://cdn-icons-png.flaticon.com/128/2264/2264829.png" alt="Swimming" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span>  
-        <span class="skill card">Self-Learning <img src="https://cdn-icons-png.flaticon.com/128/9722/9722699.png" alt="Self Learning" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        <span class="skill card">Content Creation <img src="https://cdn-icons-png.flaticon.com/128/12213/12213442.png" alt="Content Creation" style="height:18px; margin-left:4px; vertical-align: middle;" class="unselectable-image" draggable="false"></span> 
-        
-    </div> 
-</div> 
+    <li class="list-item">
+      <div class="left-content">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7XziWhDu5Db1lbmdcBrkYKsCsvFPjSFcAkZA83MaWBYwAfl5m05HXxMmw&s=10" style="border-radius: 10%;" alt="Sama Logo" class="logo-img"/>
+        <div>
+          <strong>Sama Winchester College</strong><br>
+          <span style="font-size: 0.8rem; color: #999;">Cairo, EGY</span>
+        </div>
+      </div>
+      <span class="right-text score-blue">Grade: 96.38% (2025-2026)</span>
+    </li>
+
+    <li class="list-item">
+      <div class="left-content">
+        <img src="https://s3.amazonaws.com/rm3.photos.prod.readmedia.com/schools/20585/original/AV_Logo_Transparent_Background.png?1540224498" alt="Aviation Logo" class="logo-img"/>
+        <div>
+          <strong>Aviation High School</strong><br>
+          <span style="font-size: 0.8rem; color: #999;">New York City, USA</span>
+        </div>
+      </div>
+      <span class="right-text score-blue">Grade: 96.19% (2024-2025)</span>
+    </li>
+  </ul>
 </section>
 
+    <!-- CERTIFICATIONS -->
+    <section id="certs" class="reveal">
+      <h2 class="section-title">Certifications & Training</h2>
+      <ul class="cert-list">
+        <li class="list-item">
+          <img src="https://engage.assets.thrillshare.com/jj54ekq2mhlmjir54bnt2189ieyj" style="border-radius: 10%;" alt="SAT-Logo" class="logo-img"/>
+          <div>
+            <a href="https://PDFNotAvaliable" target="_blank" rel="noopener">College Board SAT®</a>
+          </div>
+          <span class="right-text">Score: PENDING</span>
+        </li>
 
-    <!-- 7. Recommendation Letters -->
-    <section class="recommendations-section animate-in" style="margin-top:40px;">
-      <h2>Recommendations</h2>
+        <li class="list-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" class="logo-img"/>
+          <div>
+            <a href="https://www.credly.com/badges/69412dd0-6d7e-4c85-abb1-09ace5302756/public_url" target="_blank" rel="noopener">Introduction to Cybersecurity</a>
+          </div>
+          <span class="right-text">Cisco Networking Academy</span>
+        </li>
 
+        <li class="list-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" class="logo-img"/>
+          <div>
+            <a href="https://www.credly.com/badges/e81ec231-7cf4-4d51-ada8-0b54002a4288/public_url" target="_blank" rel="noopener">Digital Safety and Security Awareness</a>
+          </div>
+          <span class="right-text">Cisco Networking Academy</span>
+        </li>
+
+        <li class="list-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Cisco_academy_logo.svg/250px-Cisco_academy_logo.svg.png?_=20120812062947" alt="Cisco-NetCad-Logo" class="logo-img"/>
+          <div>
+            <a href="https://www.credly.com/badges/36c232c0-e53d-4896-a27d-ae6bd93e8384/public_url" target="_blank" rel="noopener">English for IT: Advice and Time</a>
+          </div>
+          <span class="right-text">Cisco Networking Academy</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <h2 class="section-title">Skills</h2> 
+      <div class="skills-container"> 
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/5968/5968350.png" style="width:14px; height:14px;"> Basic Python</span> 
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/1532/1532556.png" style="width:14px; height:14px;"> Basic HTML</span> 
+        <span class="skill-tag"><img src="https://www.remotion.dev/brand/public/logo/remotion/logo.svg" style="width:14px; height:14px;"> Remotion</span> 
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/6476/6476027.png" style="width:14px; height:14px;"> STEAM</span> 
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/512/3842/3842536.png" style="width:14px; height:14px;"> Time Management</span> 
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/2084/2084028.png" style="width:14px; height:14px;"> Cybersecurity</span> 
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/16921/16921758.png" style="width:14px; height:14px;"> Artificial Intelligence (AI)</span> 
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/10822/10822425.png" style="width:14px; height:14px;"> Team-Collaboration</span>
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/2264/2264829.png" style="width:14px; height:14px;"> Swimming</span>  
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/9722/9722699.png" style="width:14px; height:14px;"> Self-Learning</span> 
+        <span class="skill-tag"><img src="https://cdn-icons-png.flaticon.com/128/12213/12213442.png" style="width:14px; height:14px;"> Content Creation</span> 
+      </div> 
+    </section>
+
+    <!-- RECOMMENDATIONS -->
+    <section class="reveal">
+      <h2 class="section-title">Recommendations</h2>
       <div class="grid">
-
-        <!-- Card 1 -->
-        <div class="card">
-          <header>
-            <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" class="unselectable-image" draggable="false" >
-            <h3 style="margin:0; font-size:20px; color:var(--accent);">Name...</h3>
-            <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
-          </header>
-          <p style="margin:0; line-height:1.6;">
-            Currently Unavailable...
-          </p>
+        <div class="card rec-card">
+          <a href="#" target="_blank" rel="noopener">
+            <div class="window-header">Rec_Letter_1.exe</div>
+            <div class="card-body">
+              <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" alt="Rec 1" style="height: 75px; width: 75px;"/>
+              <h3>Name...</h3>
+              <h5 style="color:#999; font-size:0.9rem;">Role/Position...</h5>
+              <br><p style="color:#999; font-size:0.9rem;">Currently Unavailable</p>
+            </div>
+          </a>
         </div>
-
-        <!-- Card 2 -->
-        <div class="card">
-          <header>
-            <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" class="unselectable-image" draggable="false" >
-            <h3 style="margin:0; font-size:20px; color:var(--accent);">Name...</h3>
-            <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
-          </header>
-          <p style="margin:0; line-height:1.6;">
-            Currently Unavailable...
-          </p>
+        <div class="card rec-card">
+          <a href="#" target="_blank" rel="noopener">
+            <div class="window-header">Rec_Letter_2.exe</div>
+            <div class="card-body">
+              <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" alt="Rec 2" style="height: 75px; width: 75px;"/>
+              <h3>Name...</h3>
+              <h5 style="color:#999; font-size:0.9rem;">Role/Position...</h5>
+              <br><p style="color:#999; font-size:0.9rem;">Currently Unavailable</p>
+            </div>
+          </a>
         </div>
-
-        <!-- Card 3 -->
-        <div class="card">
-          <header>
-            <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);" class="unselectable-image" draggable="false" >
-            <h3 style="margin:0; font-size:20px; color:var(--accent);">Name...</h3>
-            <p style="margin:4px 0 10px 0; color:var(--muted);">Role/Position...</p>
-          </header>
-          <p style="margin:0; line-height:1.6;">
-            Currently Unavailable...
-          </p>
+        <div class="card rec-card">
+          <a href="#" target="_blank" rel="noopener">
+            <div class="window-header">Rec_Letter_3.exe</div>
+            <div class="card-body">
+              <img src="https://cdn-icons-png.flaticon.com/128/9187/9187604.png" alt="Rec 3" style="height: 75px; width: 75px;"/>
+              <h3>Name...</h3>
+              <h5 style="color:#999; font-size:0.9rem;">Role/Position...</h5>
+              <br><p style="color:#999; font-size:0.9rem;">Currently Unavailable</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Contact Me -->
-    <section id="contact" class="contact-section" aria-labelledby="contact-heading" class="animate-in">
-      <h2 id="contact-heading" style="border-bottom: none; font-size:1.8em;">Get In Touch</h2>
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <h2 class="section-title">Get In Touch</h2>
+        
+        <div class="social-links">
+          <!-- Email -->
+          <a href="mailto:yosuf.elshaer+portfolio@gmail.com" title="Email Me">
+            <img src="https://cdn-icons-png.flaticon.com/128/14930/14930344.png" style="height: 48px !important; width: 48px !important;" class="social-icon"/>
+          </a>
 
-      <!-- Flex container for logos -->
-      <div style="display:flex; gap:50px; align-items:center; margin-top:15px;">
-
-        <!-- Email logo -->
-        <a href="mailto:yosuf.elshaer+portfolio@gmail.com">
-          <img class="icon-white unselectable-image" src="https://cdn-icons-png.flaticon.com/128/3916/3916632.png" class="animate-in" alt="Mail logo" style="height:30px;" draggable="false">
-        </a>
-
-        <!-- GitHub logo -->
-        <a href="https://github.com/yosuf-e" target="_blank" rel="noopener">
-          <img class="icon-white unselectable-image" src="https://cdn-icons-png.flaticon.com/512/270/270798.png" class="animate-in" alt="GitHub logo" style="height:30px;" draggable="false">
-        </a>
+          <!-- GitHub -->
+          <a href="https://github.com/yosuf-e" target="_blank" rel="noopener" title="GitHub">
+            <img src="https://cdn-icons-png.flaticon.com/512/270/270798.png" class="social-icon"/>
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- Footer / end gap so page end is visible -->
-    <footer class="site-end" role="contentinfo" aria-label="Page end">
-      <div style="text-align: center; padding: 20px 0;">
-        <h6 style="margin:0;"> &copy; Yosuf A. Elshaer — 2026 (Developed at age 16)</h6>
-      </div>
-    </footer>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; Yosuf A. Elshaer — 2026 (Developed at age 16)
+  </footer>
 
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // --- SCROLL REVEAL IMPLEMENTATION ---
-        const observerOptions = {
-          root: null, // relative to the viewport
-          rootMargin: '0px',
-          threshold: 0.07 // Trigger when 7% of the element is visible
-        };
+  <script>
+    // --- SPLASH SCREEN LOGIC (TERMINAL STYLE) ---
+    document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("splash-content");
+  const splashScreen = document.getElementById("splash");
+  const closeBtn = document.getElementById("close-splash-btn");
 
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            // If the element is intersecting (visible), add the 'is-visible' class
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target); // Stop observing once animated
-            }
-          });
-        }, observerOptions);
+  // The step-by-step layout processing script logs and face updates
+  const steps = [
+    { type: 'log', text: "&gt; GET /index.html [200 OK]" },
+    { type: 'log', text: "&gt; Parsing DOM tree structure..." },
+    { type: 'log', text: "&gt; FETCH /assets/css/style.css" },
+    { type: 'face', line: "   ████████████   " },
+    { type: 'log', text: "&gt; Compiling CSSOM rulesets..." },
+    { type: 'face', line: " ██            ██ " },
+    { type: 'log', text: "&gt; FETCH /assets/js/app.js" },
+    { type: 'face', line: "██  ██      ██  ██" },
+    { type: 'log', text: "&gt; Executing script runtime threads..." },
+    { type: 'face', line: "██  ██      ██  ██" },
+    { type: 'log', text: "&gt; Optimizing pipeline garbage collection..." },
+    { type: 'face', line: "██    ██████    ██" },
+    { type: 'face', line: " ██            ██ " },
+    { type: 'face', line: "   ████████████   " },
+    { type: 'log', text: "&gt; UI Assets successfully mounted. [<span class='accent-text'>100%</span>]" }
+  ];
 
-        // Select all elements that should be animated
-        const elementsToAnimate = document.querySelectorAll('.animate-in');
+  let currentStepIndex = 0;
+  let faceBox = null;
+  let accumulatedFaceLines = [];
 
-        // Start observing each element
-        elementsToAnimate.forEach(el => {
-          observer.observe(el);
+  function runSequence() {
+    if (currentStepIndex >= steps.length) {
+      // Sequence done: Add final confirmation line with cursor
+      const finalLine = document.createElement("div");
+      finalLine.className = "log-line";
+      finalLine.innerHTML = `&gt; Content rendered.<span class="cursor"></span>`;
+      container.appendChild(finalLine);
+
+      // Dismiss after completion pause
+      setTimeout(dismissSplash, 900);
+      return;
+    }
+
+    const step = steps[currentStepIndex];
+
+    if (step.type === 'log') {
+      const p = document.createElement("div");
+      p.className = "log-line";
+      p.innerHTML = step.text;
+      container.appendChild(p);
+    } 
+    else if (step.type === 'face') {
+      // Create the face element container on its first run occurrence
+      if (!faceBox) {
+        faceBox = document.createElement("pre");
+        faceBox.className = "face-canvas";
+        container.appendChild(faceBox);
+      }
+      // Add the new line row and rebuild the display output
+      accumulatedFaceLines.push(step.line);
+      faceBox.textContent = accumulatedFaceLines.join("\n");
+    }
+
+    currentStepIndex++;
+    // Keep timing organic (varying from 150ms to 400ms) to feel like real data computation
+    const nextInterval = Math.floor(Math.random() * 250) + 150;
+    setTimeout(runSequence, nextInterval);
+  }
+
+  function dismissSplash() {
+    splashScreen.style.opacity = "0";
+    splashScreen.style.visibility = "hidden";
+  }
+
+  // Allow manually dropping the splash window
+  closeBtn.addEventListener("click", dismissSplash);
+
+  // Trigger terminal startup pipeline
+  setTimeout(runSequence, 400);
+});
+
+
+
+    // --- SCROLL ANIMATION LOGIC ---
+    document.addEventListener("DOMContentLoaded", function() {
+      const observerOptions = { root: null, threshold: 0.1 };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('active');
         });
-      });
+      }, observerOptions);
 
-
-      // Splash Screen Logic // 
-      (function () {
-    const splash = document.getElementById('splash');
-    if (!splash) return;
-
-    // Public function to hide splash with smooth fade
-    window.hideSplash = function (delay = 300) {
-      if (!splash) return;
-      setTimeout(() => {
-        splash.classList.add('hidden');
-        setTimeout(() => {
-          if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
-        }, 500);
-      }, delay);
-    };
-
-    // Auto-hide when window load fires
-    window.addEventListener('load', function () {
-      setTimeout(() => {
-        window.hideSplash(200);
-      }, 1500); // 7.5 Seconds
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
-  })();
-    </script>
+  </script>
 </body>
 </html>
