@@ -334,6 +334,32 @@
     box-shadow: 2px 2px 4px rgba(0,0,0,0.6);
   }
 
+  /* --- RETRO IMAGE SWITCHER --- */
+.window-img-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Sets a fixed height ratio so layout doesn't collapse. Adjust as needed (e.g., 4/3) */
+  margin-bottom: 10px;  /* Pushes the text elements downward */
+}
+
+.window-img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* Prevents image distortion */
+  border-radius: 4px;   /* Preserves your original border radius styling */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Smooth transition every 3 seconds */
+}
+
+/* Brings the targeted image to the front smoothly */
+.window-img-container img.active {
+  opacity: 1;
+}
+
+
   /* --- EDUCATION & CERTS (List Style) --- */
   .list-item { 
     display: flex; align-items: center; gap: 15px; padding: 12px 0; border-bottom: 1px solid #333;
@@ -476,13 +502,15 @@
 
         <!-- Aviation Project -->
         <div class="card project-card">
-            <div class="window-header">Aviation_Project.exe</div>
-            <div class="card-body">
-              <img src="Assets/Aviation_Project.jpg" alt="Aircraft Project" style="width:100%; height:auto; border-radius:4px;" />
-              <span class="banner-title">Aviation H.S. Project</span>
-              <span class="muted">Class Photo 2025</span>
+          <div class="window-header">Aviation_Project.exe</div>
+          <div class="card-body">
+            <div class="window-img-container">
+              <img src="Assets/Aviation_Project.jpg" class="active" />
+              <img src="Assets/Aviation_Project_2.jpg" />
             </div>
-          </a>
+            <span class="banner-title">Aviation H.S. Project</span>
+            <span class="muted">Class Photo 2025</span>
+          </div>
         </div>
 
         <!-- YouTube Channel -->
@@ -792,6 +820,23 @@
 
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
+
+
+    document.querySelectorAll('.window-img-container').forEach((container) => {
+    const images = container.querySelectorAll('img');
+    let currentIndex = 0;
+
+    // Check if the container actually has images to loop through
+    if (images.length > 1) {
+      setInterval(() => {
+        // Remove active state from current image
+        images[currentIndex].classList.remove('active');
+        
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+      }, 4000); // 4 Seconds
+    }
+  });
   </script>
 </body>
 </html>
